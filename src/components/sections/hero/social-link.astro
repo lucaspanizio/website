@@ -1,0 +1,42 @@
+---
+import { ExternalLink } from '@lucide/astro';
+
+interface Props {
+  title: string;
+  url: string;
+  username?: string;
+  icon: typeof ExternalLink;
+}
+
+const { title, url, username, icon: Icon } = Astro.props;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group inline-flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors"
+>
+  <div
+    class="bg-slate-100 text-slate-600 p-2 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all"
+  >
+    <Icon size={18} />
+  </div>
+
+  <div class="leading-tight">
+    <p class="text-xxs sm:text-xs font-bold tracking-widest uppercase">
+      {title}
+    </p>
+    {username && (
+      <p class="text-xxs font-mono italic tracking-wider">
+        {username}
+      </p>
+    )}
+  </div>
+
+  <ExternalLink
+    size={12}
+    class="opacity-0 group-hover:opacity-100 transition-opacity"
+  />
+</a>
+

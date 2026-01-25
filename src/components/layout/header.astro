@@ -1,0 +1,29 @@
+---
+import { Printer } from '@lucide/astro';
+---
+
+<header
+  class="fixed top-0 left-0 right-0 h-16 z-40 print:hidden flex items-center justify-center gap-3 md:gap-4 px-4 bg-inherit bg-opacity-80 backdrop-blur-md border-b border-slate-200"
+>
+  <div
+    class="bg-white border-slate-200 shadow-sm flex items-center border rounded-full overflow-hidden p-0.5"
+  >
+    <button
+      class="px-3 py-1 rounded-full text-xxs md:text-xs font-bold transition-all bg-purple-600 text-white"
+    >
+      PT
+    </button>
+    <button
+      class="px-3 py-1 rounded-full text-xxs md:text-xs font-bold transition-all text-slate-400 hover:text-slate-600"
+    >
+      EN
+    </button>
+  </div>
+  <button
+    onclick="window.print()"
+    class="bg-slate-900 hover:bg-slate-800 flex items-center gap-2 px-3 md:px-4 py-1.5 text-white border-none rounded-full text-xxs md:text-xs font-bold transition-all shadow-sm"
+  >
+    <Printer size={14} />
+    SALVAR PDF
+  </button>
+</header>

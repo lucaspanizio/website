@@ -1,0 +1,94 @@
+---
+import SocialLink from './social-link.astro';
+import { Github, Phone, Mail, BriefcaseBusiness } from '@lucide/astro';
+---
+
+<div
+  class="bg-white border-slate-200 mb-6 p-8 rounded-lg border shadow-xl print:shadow-none print:border-slate-300"
+>
+  <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-x-10 gap-y-6">
+
+    <!-- COLUNA ESQUERDA -->
+    <div class="space-y-2">
+      <h1 class="text-purple-700 text-xl sm:text-2xl font-black uppercase tracking-wide">
+        JOSÉ LUCAS PANIZIO
+      </h1>
+
+      <p class="text-slate-400 font-mono text-sm sm:text-base italic">
+        Desenvolvedor Front-end
+      </p>
+
+      <!-- Mobile (texto resumido com expansão) -->
+      <div class="sm:hidden">
+        <p class="text-slate-600 text-xs leading-relaxed max-w-3xl">
+          <span id="about-short">
+            Atuo no desenvolvimento de aplicações web utilizando React e TypeScript, com foco na construção e manutenção de soluções escaláveis.
+          </span>
+          <span id="about-rest" class="hidden">
+            Tenho forte interesse em arquitetura de componentes, design systems e boas práticas de engenharia front-end. Trabalho de forma colaborativa em times ágeis, participando ativamente de discussões técnicas e code reviews, contribuindo para a evolução contínua da qualidade do produto e do código.
+          </span>
+        </p>
+        <button
+          id="about-toggle"
+          class="text-purple-700 text-xs font-bold mt-1"
+          type="button"
+        >
+          ver mais...
+        </button>
+      </div>
+
+      <!-- Desktop/Tablet (texto completo) -->
+      <p class="hidden sm:block pt-2 text-slate-600 text-sm leading-relaxed max-w-3xl">
+        Atuo no desenvolvimento de aplicações web utilizando React e TypeScript,
+        com foco na construção e manutenção de soluções escaláveis. Tenho forte
+        interesse em arquitetura de componentes, design systems e boas práticas
+        de engenharia front-end. Trabalho de forma colaborativa em times ágeis,
+        participando ativamente de discussões técnicas e code reviews,
+        contribuindo para a evolução contínua da qualidade do produto e do código.
+      </p>
+    </div>
+
+    <!-- COLUNA DIREITA (SOCIAL LINKS) -->
+    <div class="grid grid-cols-1 max-md:grid-cols-2 gap-3">
+      <SocialLink
+        title="Portfolio"
+        username="panizio.is-a.dev"
+        url="https://panizio.is-a.dev"
+        icon={BriefcaseBusiness}
+      />
+
+      <SocialLink
+        title="GitHub"
+        username="lucaspanizio"
+        url="https://github.com/lucaspanizio"
+        icon={Github}
+      />
+
+      <SocialLink
+        title="WhatsApp"
+        username="+55 43 99625-5495"
+        url="https://wa.me/5543996255495"
+        icon={Phone}
+      />
+
+      <SocialLink
+        title="Email"
+        username="lucaspanizio@gmail.com"
+        url="mailto:lucaspanizio@gmail.com"
+        icon={Mail}
+      />
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const toggle = document.getElementById('about-toggle');
+  const rest = document.getElementById('about-rest');
+  if (toggle && rest) {
+    toggle.addEventListener('click', () => {
+      const isHidden = rest.classList.toggle('hidden');
+      toggle.textContent = isHidden ? 'ver mais...' : 'ver menos';
+    });
+  }
+</script>
+
