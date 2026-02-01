@@ -1,0 +1,65 @@
+---
+import { Award } from '@lucide/astro';
+import CourseItem from '../../../components/course-item.astro';
+---
+
+<div
+  class="bg-white border-slate-200 border p-6 rounded-lg shadow-xl print:shadow-none print:border-slate-300"
+>
+  <h2
+    class="text-purple-700 border-slate-100 font-black tracking-widest text-xs uppercase mb-6 border-b pb-2 flex items-center gap-2"
+  >
+    <Award size={14} />
+    CURSOS E CERTIFICAÇÕES
+  </h2>
+  <div class="divide-y divide-slate-100">
+    <CourseItem
+      title="Next.js"
+      institution="Rocketseat"
+      period="Cursando"
+      description="Curso voltado ao desenvolvimento de aplicações com Next.js, abordando SSR, SSG, ISR, roteamento via pages e app router e Server Components."
+    />
+
+    <CourseItem
+      title="Angular"
+      institution="Rocketseat"
+      period="Jan 2026 · 11h"
+      description="Curso introdutório de Angular v21, com abordagem da estrutura do framework, componentes e fluxo básico de dados."
+    />
+
+    <CourseItem
+      title="Tailwind CSS"
+      institution="Origamid"
+      period="Ago 2025 · 16h"
+      description="Curso voltado a construção de layouts responsivos com Tailwind CSS v4, incluindo customização de tema e composição de utilitários."
+    />
+
+    <CourseItem
+      title="Javascript ES6"
+      institution="Origamid"
+      period="Jul 2025 · 74h"
+      description="Curso de JavaScript moderno (ES6+), abrangendo módulos, closures, manipulação do DOM, consumo de APIs com fetch e programação assíncrona."
+    />
+
+    <CourseItem
+      title="React Profissional"
+      institution="Udemy"
+      period="Abr 2025 · 27h"
+      description="Curso de React com foco em Styled Components, documentação de componentes com Storybook e testes automatizados com Jest."
+    />
+
+    <CourseItem
+      title="React.js"
+      institution="Rocketseat"
+      period="Mar 2025 · 50h"
+      description="Curso completo sobre o ecossistema React, incluindo componentes, estado, integração com bibliotecas, testes e processos de build e deploy."
+    />
+
+    <CourseItem
+      title="Comunicação e Oratória"
+      institution="Retoricamente"
+      period="Set 2023 · 16h"
+      description="Curso de comunicação e oratória em contexto profissional com teoria e prática sob mentoria de Cinthia Erika."
+    />
+  </div>
+</div>

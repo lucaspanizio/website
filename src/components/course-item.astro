@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  institution: string;
+  period: string;
+  description: string;
+}
+
+const { title, institution, period, description } = Astro.props;
+---
+
+<div class="border-slate-100 border-b py-4 last:border-0 group print:py-4">
+  <div class="flex justify-between items-start mb-1">
+    <h3 class="text-slate-900 font-bold text-sm sm:text-base">{title}</h3>
+    <span class="text-xxs sm:text-xs text-slate-500 font-mono italic whitespace-nowrap ml-4">{period}</span>
+  </div>
+  <p class="text-purple-600 text-xxs sm:text-xs uppercase tracking-wider font-bold mb-3">{institution}</p>
+  <p class="text-slate-600 text-xs sm:text-sm leading-tight">{description}</p>
+</div>
