@@ -1,22 +1,29 @@
----
+﻿---
 import { Award } from '@lucide/astro';
 import CourseItem from '../../../components/course-item.astro';
 ---
 
 <div
-  class="bg-white border-slate-200 border p-6 rounded-lg shadow-xl print:shadow-none print:border-slate-300"
+  class="bg-surface border-edge border p-6 rounded-lg shadow-xl print:shadow-none print:border-edge-soft"
 >
   <h2
-    class="text-purple-700 border-slate-100 font-black tracking-widest text-xs uppercase mb-6 border-b pb-2 flex items-center gap-2"
+    class="text-accent-700 border-edge-faint font-black tracking-widest text-xs uppercase mb-6 border-b pb-2 flex items-center gap-2"
   >
     <Award size={14} />
     CURSOS E CERTIFICAÇÕES
   </h2>
   <div class="divide-y divide-slate-100">
     <CourseItem
+      title="Node.js"
+      institution="Rocketseat"
+      period="Em andamento · 73h"
+      description="Curso de Node.js voltado ao desenvolvimento backend com JavaScript, abordando criação de servidores, APIs REST, autenticação, integração com banco de dados e ecossistema Node."
+    />
+
+    <CourseItem
       title="Next.js"
       institution="Rocketseat"
-      period="Cursando"
+      period="2026 · 45h"
       description="Curso voltado ao desenvolvimento de aplicações com Next.js, abordando SSR, SSG, ISR, roteamento via pages e app router e Server Components."
     />
 

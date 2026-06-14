@@ -1,36 +1,34 @@
----
-import { Github, Phone, Mail, BriefcaseBusiness } from '@lucide/astro';
+﻿---
+import { Github, Phone, Mail, BriefcaseBusiness, Linkedin } from '@lucide/astro';
 import SocialLink from './social-link.astro';
 ---
 
 <div
-  class="bg-white border-slate-200 mb-6 p-8 rounded-lg border shadow-xl print:shadow-none print:border-slate-300"
+  class="bg-surface border-edge mb-6 p-8 rounded-lg border shadow-xl print:shadow-none print:border-edge-soft print-break-inside-avoid"
 >
   <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-x-10 gap-y-6">
-
-    <!-- COLUNA ESQUERDA -->
     <div class="space-y-2">
-      <h1 class="text-purple-700 text-xl sm:text-2xl font-black uppercase tracking-wide">
+      <h1 class="text-accent-700 text-xl sm:text-2xl font-black uppercase tracking-wide">
         JOSÉ LUCAS PANIZIO
       </h1>
 
-      <p class="text-slate-400 font-mono text-sm sm:text-base italic">
-        Desenvolvedor Front-end
+      <p class="text-ink-subtle font-mono text-sm sm:text-base italic">
+        Desenvolvedor Frontend
       </p>
 
       <!-- Mobile (texto resumido com expansão) -->
       <div class="sm:hidden">
-        <p class="text-slate-600 text-xs leading-relaxed max-w-3xl">
-          <span id="about-short">
-            Atuo no desenvolvimento de aplicações web utilizando React e TypeScript, com foco na construção e manutenção de soluções escaláveis.
-          </span>
-          <span id="about-rest" class="hidden">
-            Tenho forte interesse em arquitetura de componentes, design systems e boas práticas de engenharia front-end. Trabalho de forma colaborativa em times ágeis, participando ativamente de discussões técnicas e code reviews, contribuindo para a evolução contínua da qualidade do produto e do código.
-          </span>
-        </p>
+        <div class="text-ink-body text-xs leading-relaxed max-w-3xl">
+          <p id="about-short">
+            Desenvolvedor Frontend com mais de 4 anos de experiência na construção e evolução de aplicações web com React e TypeScript, com foco em performance, qualidade de código e experiência do usuário.
+          </p>
+          <p id="about-rest" class="hidden mt-2">
+            Atuo em times ágeis, participando de discussões técnicas, definição de padrões, code reviews e treinamentos internos, contribuindo para a qualidade das entregas e a evolução contínua das aplicações e do time. Atualmente venho me aprofundando em Node.js com o objetivo de evoluir para um perfil fullstack.
+          </p>
+        </div>
         <button
           id="about-toggle"
-          class="text-purple-700 text-xs font-bold mt-1"
+          class="text-accent-700 text-xs font-bold mt-1"
           type="button"
         >
           ver mais...
@@ -38,23 +36,34 @@ import SocialLink from './social-link.astro';
       </div>
 
       <!-- Desktop/Tablet (texto completo) -->
-      <p class="hidden sm:block pt-2 text-slate-600 text-sm leading-relaxed max-w-3xl">
-        Atuo no desenvolvimento de aplicações web utilizando React e TypeScript,
-        com foco na construção e manutenção de soluções escaláveis. Tenho forte
-        interesse em arquitetura de componentes, design systems e boas práticas
-        de engenharia front-end. Trabalho de forma colaborativa em times ágeis,
-        participando ativamente de discussões técnicas e code reviews,
-        contribuindo para a evolução contínua da qualidade do produto e do código.
-      </p>
+      <div class="hidden sm:block pt-2 space-y-3">
+        <p class="text-ink-body text-sm leading-relaxed max-w-3xl">
+          Desenvolvedor Frontend com mais de 4 anos de experiência na construção e evolução de
+          aplicações web com React e TypeScript, com foco em performance, qualidade de código e
+          experiência do usuário, sempre alinhado às necessidades do produto.
+        </p>
+        <p class="text-ink-body text-sm leading-relaxed max-w-3xl">
+          Atuo em times ágeis, participando de discussões técnicas, definição de padrões, code
+          reviews e treinamentos internos, contribuindo para a qualidade das entregas e a evolução
+          contínua das aplicações e do time. Atualmente venho me aprofundando em Node.js com o
+          objetivo de evoluir para um perfil fullstack.
+        </p>
+      </div>
     </div>
 
-    <!-- COLUNA DIREITA (SOCIAL LINKS) -->
-    <div class="grid grid-cols-1 max-md:grid-cols-2 gap-3">
+    <div id="social-links" class="grid grid-cols-1 max-md:grid-cols-2 gap-3">
       <SocialLink
         title="Portfolio"
         username="panizio.is-a.dev"
         url="https://panizio.is-a.dev"
         icon={BriefcaseBusiness}
+      />
+
+      <SocialLink
+        title="LinkedIn"
+        username="lucaspanizio"
+        url="https://linkedin.com/in/lucaspanizio"
+        icon={Linkedin}
       />
 
       <SocialLink

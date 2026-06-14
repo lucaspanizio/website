@@ -1,4 +1,4 @@
----
+﻿---
 import { ExternalLink } from '@lucide/astro';
 
 interface Props {
@@ -15,10 +15,10 @@ const { title, url, username, icon: Icon } = Astro.props;
   href={url}
   target="_blank"
   rel="noopener noreferrer"
-  class="group inline-flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors"
+  class="group inline-flex items-center gap-3 text-ink-body hover:text-accent-600 transition-colors"
 >
   <div
-    class="bg-slate-100 text-slate-600 p-2 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all"
+    class="bg-surface-dim text-ink-body p-2 rounded-md group-hover:bg-accent-50 group-hover:text-accent-600 transition-all"
   >
     <Icon size={18} />
   </div>

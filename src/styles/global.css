@@ -4,41 +4,7 @@
 
 @layer base {
   :root {
-    /* === CORES === */
-    --color-bg-primary: #f8fafc;
-    --color-text-primary: #0f172a;
-    --color-text-secondary: #64748b;
-    --color-text-muted: #94a3b8;
-
-    --color-accent-primary: #7c3aed;
-    --color-accent-secondary: #a855f7;
-    --color-accent-hover: #6d28d9;
-
-    --color-success: #10b981;
-    --color-success-bg: rgba(16, 185, 129, 0.1);
-    --color-success-border: #a7f3d0;
-
-    --color-border-light: #e2e8f0;
-    --color-border-medium: #cbd5e1;
-
-    --color-card-bg: #ffffff;
-    --color-card-shadow: rgba(0, 0, 0, 0.1);
-
-    --color-tag-bg: #f1f5f9;
-    --color-tag-border: #e2e8f0;
-    --color-tag-text: #475569;
-
-    --color-selection-bg: #7c3aed;
-    --color-selection-text: #ffffff;
-
-    /* === TAMANHOS DE FONTE === */
     --text-xxs: 0.6875rem; /* 11px */
-
-    /* === SCROLLBAR === */
-    --scrollbar-width: 8px;
-    --scrollbar-track: #1e293b;
-    --scrollbar-thumb: #3b82f6;
-    --scrollbar-thumb-hover: #2563eb;
   }
 
   body {
@@ -48,8 +14,8 @@
       BlinkMacSystemFont,
       'Segoe UI',
       sans-serif;
-    background-color: var(--color-bg-primary);
-    color: var(--color-text-primary);
+    background-color: theme('colors.surface.tint');
+    color: theme('colors.ink.title');
     font-display: swap;
   }
 }
@@ -61,24 +27,29 @@
 }
 
 ::-webkit-scrollbar {
-  width: var(--scrollbar-width);
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
+  background: theme('colors.surface.darker');
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
+  background: #3b82f6;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-thumb-hover);
+  background: theme('colors.accent.600');
 }
 
 h2 {
   margin-bottom: 0 !important;
+}
+
+@page {
+  margin: 20px;
+  size: 1240px 1737px;
 }
 
 @media print {
@@ -89,37 +60,60 @@ h2 {
   }
 
   main {
-    padding: 0px !important;
+    padding: 8px !important;
     margin: 0 !important;
     max-width: 100% !important;
     width: 100% !important;
+  }
+
+  /* Force lg: breakpoint (≥1024px) — A4 prints at ~794px so lg: is inactive by default */
+  .lg\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  }
+  .lg\:col-span-7 {
+    grid-column: span 7 / span 7 !important;
+  }
+  .lg\:col-span-5 {
+    grid-column: span 5 / span 5 !important;
+  }
+
+  /* Force md: breakpoint (≥768px) */
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .md\:grid-cols-\[1fr_auto\] {
+    grid-template-columns: 1fr auto !important;
+  }
+
+  /* Force sm: breakpoint (≥640px) */
+  .sm\:block {
+    display: block !important;
+  }
+  .sm\:hidden {
+    display: none !important;
+  }
+  .sm\:text-2xl {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+  }
+  .sm\:text-base {
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+  }
+  .sm\:text-xs {
+    font-size: 0.75rem !important;
+    line-height: 1rem !important;
   }
 
   .print-break-inside-avoid {
     break-inside: avoid;
   }
 
-  .no-mb {
-    margin-bottom: 0 !important;
-  }
-
-  .no-margin {
-    margin: 0 !important;
-  }
-
-  @page {
-    margin: 1cm;
-  }
-
-  .border {
-    border: 0 !important;
+  #social-links {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
   }
 
   footer {
-    background: none !important;
-  }
-
-  .border-darkfixed {
-    border-color: #222;
+    display: none !important;
   }
 }
