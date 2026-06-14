@@ -1,4 +1,4 @@
-﻿---
+---
 import { Printer } from '@lucide/astro';
 ---
 
@@ -9,11 +9,13 @@ import { Printer } from '@lucide/astro';
     class="bg-surface border-edge shadow-sm flex items-center border rounded-full overflow-hidden p-0.5"
   >
     <button
+      id="btn-pt"
       class="px-3 py-1 rounded-full text-xxs md:text-xs font-bold transition-all bg-accent-600 text-white"
     >
       PT
     </button>
     <button
+      id="btn-en"
       class="px-3 py-1 rounded-full text-xxs md:text-xs font-bold transition-all text-ink-subtle hover:text-ink-body"
     >
       EN
@@ -24,24 +26,68 @@ import { Printer } from '@lucide/astro';
     class="bg-surface-dark hover:bg-surface-darker flex items-center gap-2 px-3 md:px-4 py-1.5 text-white border-none rounded-full text-xxs md:text-xs font-bold transition-all shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
   >
     <Printer size={14} />
-    SALVAR PDF
+    <span data-i18n="header.save_pdf">SALVAR PDF</span>
   </button>
 </header>
 
 <script>
-  const btn = document.getElementById('print-btn') as HTMLButtonElement | null;
-  if (btn) {
-    const origHTML = btn.innerHTML;
+  import { translations, type Lang } from '../../i18n/translations';
 
-    btn.addEventListener('click', () => window.print());
+  const LANG_KEY = 'resume-lang';
 
-    window.addEventListener('beforeprint', () => {
-      btn.disabled = true;
-    });
+  const i18n = {
+    get lang(): Lang {
+      return (localStorage.getItem(LANG_KEY) as Lang) || 'pt';
+    },
 
-    window.addEventListener('afterprint', () => {
-      btn.disabled = false;
-      btn.innerHTML = origHTML;
-    });
+    t(key: string): string {
+      return translations[this.lang]?.[key] ?? key;
+    },
+
+    apply(): void {
+      const lang = this.lang;
+      document.querySelectorAll<HTMLElement>('[data-i18n]').forEach(el => {
+        el.textContent = this.t(el.dataset.i18n!);
+      });
+      document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
+      this._syncButtons(lang);
+    },
+
+    setLang(lang: Lang): void {
+      localStorage.setItem(LANG_KEY, lang);
+      this.apply();
+    },
+
+    _syncButtons(lang: Lang): void {
+      const ptBtn = document.getElementById('btn-pt');
+      const enBtn = document.getElementById('btn-en');
+      const isEn = lang === 'en';
+
+      ptBtn?.classList.toggle('bg-accent-600', !isEn);
+      ptBtn?.classList.toggle('text-white', !isEn);
+      ptBtn?.classList.toggle('text-ink-subtle', isEn);
+      ptBtn?.classList.toggle('hover:text-ink-body', isEn);
+
+      enBtn?.classList.toggle('bg-accent-600', isEn);
+      enBtn?.classList.toggle('text-white', isEn);
+      enBtn?.classList.toggle('text-ink-subtle', !isEn);
+      enBtn?.classList.toggle('hover:text-ink-body', !isEn);
+    },
+  };
+
+  // Expose globally for cross-component access (e.g. about toggle in hero)
+  (window as any).__i18n = i18n;
+
+  // Astro bundles scripts as type="module" — DOM is already ready when this runs
+  i18n.apply();
+
+  document.getElementById('btn-pt')?.addEventListener('click', () => i18n.setLang('pt'));
+  document.getElementById('btn-en')?.addEventListener('click', () => i18n.setLang('en'));
+
+  const printBtn = document.getElementById('print-btn') as HTMLButtonElement | null;
+  if (printBtn) {
+    printBtn.addEventListener('click', () => window.print());
+    window.addEventListener('beforeprint', () => { printBtn.disabled = true; });
+    window.addEventListener('afterprint', () => { printBtn.disabled = false; });
   }
 </script>

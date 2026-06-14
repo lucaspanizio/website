@@ -1,4 +1,4 @@
-﻿---
+---
 import { GraduationCap } from '@lucide/astro';
 ---
 
@@ -9,13 +9,13 @@ import { GraduationCap } from '@lucide/astro';
     class="text-accent-700 border-edge-faint font-black tracking-widest text-xs uppercase mb-6 border-b pb-2 flex items-center gap-2"
   >
     <GraduationCap size={14} />
-    Formação Acadêmica
+    <span data-i18n="grad.title">Formação Acadêmica</span>
   </h2>
 
-  <div class="divide-y divide-slate-100">
+  <div class="divide-y divide-edge-faint">
     <div class="border-edge-faint border-b py-4 last:border-0 group print:py-4">
       <div class="flex justify-between items-center mb-1">
-        <h3 class="text-ink-title font-bold text-sm sm:text-base">
+        <h3 data-i18n="grad.degree" class="text-ink-title font-bold text-sm sm:text-base">
           Bacharelado em Ciência da Computação
         </h3>
         <span class="text-xxs sm:text-xs text-ink-muted font-mono italic whitespace-nowrap ml-4">
@@ -30,41 +30,32 @@ import { GraduationCap } from '@lucide/astro';
       <ul class="space-y-1 mb-4 text-xs">
         <li class="text-ink-body flex gap-2 leading-tight">
           <span class="text-accent-600">✧</span>
-          Fundamentos de computação, lógica, algoritmos, estruturas de dados e orientação a objetos.
+          <span data-i18n="grad.bullet.0">Fundamentos de computação, lógica, algoritmos, estruturas de dados e orientação a objetos.</span>
         </li>
         <li class="text-ink-body flex gap-2 leading-tight">
           <span class="text-accent-600">✧</span>
-          Contato com desenvolvimento web, bancos de dados e arquitetura de sistemas.
+          <span data-i18n="grad.bullet.1">Contato com desenvolvimento web, bancos de dados e arquitetura de sistemas.</span>
         </li>
         <li class="text-ink-body flex gap-2 leading-tight">
           <span class="text-accent-600">✧</span>
-           Base sólida para análise, modelagem e tomada de decisões técnicas em sistemas de software.
+          <span data-i18n="grad.bullet.2">Base sólida para análise, modelagem e tomada de decisões técnicas em sistemas de software.</span>
         </li>
       </ul>
 
-      <div class="flex flex-wrap gap-2 text-accent-700 text-xxs">        
-        <span
-          class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong  print:border-edge text-[9px] tracking-wider"
-        >
+      <div class="flex flex-wrap gap-2 text-accent-700 text-xxs">
+        <span data-i18n="grad.tag.0" class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">
           Lógica
         </span>
-        <span
-          class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong  print:border-edge text-[9px] tracking-wider"
-        >
+        <span data-i18n="grad.tag.1" class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">
           Estrutura de dados
         </span>
-        <span
-          class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider"
-        >
+        <span data-i18n="grad.tag.2" class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">
           Banco de dados
         </span>
-        <span
-          class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider"
-        >
+        <span data-i18n="grad.tag.3" class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">
           Orientação a objetos
         </span>
       </div>
     </div>
   </div>
 </div>
-

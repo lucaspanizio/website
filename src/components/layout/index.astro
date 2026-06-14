@@ -38,6 +38,12 @@ const {
     <!-- Canonical -->
     <link rel="canonical" href="https://panizio.is-a.dev" />
     
+    <!-- Lang sync (runs before render to avoid flash) -->
+    <script is:inline>
+      var _lang = localStorage.getItem('resume-lang') || 'pt';
+      document.documentElement.lang = _lang === 'en' ? 'en' : 'pt-BR';
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

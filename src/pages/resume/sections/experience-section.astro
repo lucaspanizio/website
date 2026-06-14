@@ -1,4 +1,4 @@
-﻿---
+---
 import { BriefcaseBusiness } from "@lucide/astro";
 ---
 
@@ -9,10 +9,10 @@ import { BriefcaseBusiness } from "@lucide/astro";
     class="text-accent-700 border-edge-faint font-black tracking-widest text-xs uppercase mb-6 border-b pb-2 flex items-center gap-2"
   >
     <BriefcaseBusiness size={14} />
-    Experiências Profissionais
+    <span data-i18n="exp.title">Experiências Profissionais</span>
   </h2>
 
-  <div class="divide-y divide-slate-100">
+  <div class="divide-y divide-edge-faint">
 
     <!-- Solus - Frontend -->
     <div class="border-edge-faint border-b py-6 last:border-0 group print:py-4 print-break-inside-avoid">
@@ -20,76 +20,44 @@ import { BriefcaseBusiness } from "@lucide/astro";
         <h3 class="text-ink-title font-bold text-sm sm:text-base">
           Solus Computação
         </h3>
-        <span class="text-xxs sm:text-xs text-ink-muted font-mono italic whitespace-nowrap ml-4">
+        <span data-i18n="exp.solus1.period" class="text-xxs sm:text-xs text-ink-muted font-mono italic whitespace-nowrap ml-4">
           Fev de 2022 — Atualmente
         </span>
       </div>
 
-      <p class="text-accent-700 text-xs uppercase tracking-wider font-bold mb-3">
+      <p data-i18n="exp.solus1.role" class="text-accent-700 text-xs uppercase tracking-wider font-bold mb-3">
         Desenvolvedor Front-end
       </p>
 
       <div class="space-y-4">
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1">
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Desenvolvimento e evolução de aplicações web voltadas à gestão de planos de saúde, utilizando React e TypeScript, integradas a APIs REST.</li>
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Participação em discussões de arquitetura de software e análise de produto, contribuindo para a definição de soluções técnicas no frontend.</li>
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Condução de treinamentos internos sobre boas práticas de programação e padrões de frontend.</li>
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Criação e evolução de biblioteca de componentes baseada em Design System utilizada entre múltiplas aplicações.</li>
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Documentação e padronização de componentes do Design System utilizando Storybook.</li>
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Implementação de pipelines de CI/CD com GitHub Actions para automação e padronização do fluxo de desenvolvimento.</li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.solus1.duty.0">Desenvolvimento e evolução de aplicações web voltadas à gestão de planos de saúde, utilizando React e TypeScript, integradas a APIs REST.</span></li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.solus1.duty.1">Participação em discussões de arquitetura de software e análise de produto, contribuindo para a definição de soluções técnicas no frontend.</span></li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.solus1.duty.2">Condução de treinamentos internos sobre boas práticas de programação e padrões de frontend.</span></li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.solus1.duty.3">Criação e evolução de biblioteca de componentes baseada em Design System utilizada entre múltiplas aplicações.</span></li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.solus1.duty.4">Documentação e padronização de componentes do Design System utilizando Storybook.</span></li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.solus1.duty.5">Implementação de pipelines de CI/CD com GitHub Actions para automação e padronização do fluxo de desenvolvimento.</span></li>
         </ul>
 
         <div class="bg-success-50/30 border-success-100 p-4 rounded-lg border print:bg-success-50/10">
-          <h4 class="text-success-700 text-xxs font-bold uppercase mb-2 tracking-widest">
+          <h4 data-i18n="exp.impact" class="text-success-700 text-xxs font-bold uppercase mb-2 tracking-widest">
             Impacto & Resultados
           </h4>
-          <ul class="space-y-1">            
-            <li class="text-ink-strong text-xs flex gap-2"><span class="text-success-600">✓</span>Reconhecido por votação como símbolo de respeito do ano 2024.</li>
-            <li class="text-ink-strong text-xs flex gap-2"><span class="text-success-600">✓</span>Cinco promoções de senioridade.</li>
+          <ul class="space-y-1">
+            <li class="text-ink-strong text-xs flex gap-2"><span class="text-success-600">✓</span><span data-i18n="exp.solus1.impact.0">Reconhecido por votação como símbolo de respeito do ano 2024.</span></li>
+            <li class="text-ink-strong text-xs flex gap-2"><span class="text-success-600">✓</span><span data-i18n="exp.solus1.impact.1">Cinco promoções de senioridade.</span></li>
           </ul>
         </div>
 
-        <div class="flex flex-wrap gap-1 text-accent-700 text-xxs">        
-          <span
-            class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong  print:border-edge text-[9px] tracking-wider"
-          >
-            React.js
-          </span>
-          <span
-            class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider"
-          >
-            Typescript
-          </span>
-          <span
-            class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider"
-          >
-            Styled Components
-          </span>
-          <span
-            class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider"
-          >
-            Tailwind CSS
-          </span>
-          <span
-            class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider"
-          >
-            Storybook
-          </span>
-          <span
-            class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider"
-          >
-            Vite
-          </span>
-          <span
-            class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider"
-          >
-            Git
-          </span>
-          <span
-            class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider"
-          >
-            Github
-          </span>
+        <div class="flex flex-wrap gap-1 text-accent-700 text-xxs">
+          <span class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">React.js</span>
+          <span class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">Typescript</span>
+          <span class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">Styled Components</span>
+          <span class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">Tailwind CSS</span>
+          <span class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">Storybook</span>
+          <span class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">Vite</span>
+          <span class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">Git</span>
+          <span class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">Github</span>
         </div>
       </div>
     </div>
@@ -100,53 +68,37 @@ import { BriefcaseBusiness } from "@lucide/astro";
         <h3 class="text-ink-title font-bold text-sm sm:text-base">
           Solus Computação
         </h3>
-        <span class="text-xxs sm:text-xs text-ink-muted font-mono italic whitespace-nowrap ml-4">
+        <span data-i18n="exp.solus2.period" class="text-xxs sm:text-xs text-ink-muted font-mono italic whitespace-nowrap ml-4">
           Ago de 2020 — Mai de 2021
         </span>
       </div>
 
-      <p class="text-accent-700 text-xs uppercase tracking-wider font-bold mb-3">
+      <p data-i18n="exp.solus2.role" class="text-accent-700 text-xs uppercase tracking-wider font-bold mb-3">
         Analista de Sistemas
       </p>
 
       <div class="space-y-4">
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1">
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Suporte e manutenção do sistema Solus, atuando na resolução de incidentes e melhorias do sistema.</li>
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Manutenção em código legado utilizando PHP, Delphi e PL/SQL.</li>
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Controle de versão utilizando SVN.</li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.solus2.duty.0">Suporte e manutenção do sistema Solus, atuando na resolução de incidentes e melhorias do sistema.</span></li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.solus2.duty.1">Manutenção em código legado utilizando PHP, Delphi e PL/SQL.</span></li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.solus2.duty.2">Controle de versão utilizando SVN.</span></li>
         </ul>
 
         <div class="bg-success-50/30 border-success-100 p-4 rounded-lg border print:bg-success-50/10">
-          <h4 class="text-success-700 text-xxs font-bold uppercase mb-2 tracking-widest">
+          <h4 data-i18n="exp.impact" class="text-success-700 text-xxs font-bold uppercase mb-2 tracking-widest">
             Impacto & Resultados
           </h4>
           <ul class="space-y-1">
-            <li class="text-ink-strong text-xs flex gap-2"><span class="text-success-600">✓</span>Reconhecido entre os analistas com maior volume de chamados resolvidos dentro do SLA.</li>
-            <li class="text-ink-strong text-xs flex gap-2"><span class="text-success-600">✓</span>Uma promoção de senioridade.</li>
+            <li class="text-ink-strong text-xs flex gap-2"><span class="text-success-600">✓</span><span data-i18n="exp.solus2.impact.0">Reconhecido entre os analistas com maior volume de chamados resolvidos dentro do SLA.</span></li>
+            <li class="text-ink-strong text-xs flex gap-2"><span class="text-success-600">✓</span><span data-i18n="exp.solus2.impact.1">Uma promoção de senioridade.</span></li>
           </ul>
         </div>
 
-        <div class="flex flex-wrap gap-1 text-accent-700 text-xxs">        
-          <span
-            class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong  print:border-edge text-[9px] tracking-wider"
-          >
-            PL/SQL
-          </span>          
-          <span
-            class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider"
-          >
-            Delphi
-          </span>
-          <span
-            class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider"
-          >
-            PHP
-          </span>
-          <span
-            class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider"
-          >
-            SVN
-          </span>        
+        <div class="flex flex-wrap gap-1 text-accent-700 text-xxs">
+          <span class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">PL/SQL</span>
+          <span class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">Delphi</span>
+          <span class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">PHP</span>
+          <span class="bg-accent-50 border-accent-100 px-2 py-1 border rounded uppercase font-bold print:bg-surface-tint print:text-ink-strong print:border-edge text-[9px] tracking-wider">SVN</span>
         </div>
       </div>
     </div>
@@ -157,20 +109,20 @@ import { BriefcaseBusiness } from "@lucide/astro";
         <h3 class="text-ink-title font-bold text-sm sm:text-base">
           Panizio Transportes
         </h3>
-        <span class="text-xxs text-ink-muted font-mono italic whitespace-nowrap ml-4">
+        <span data-i18n="exp.panizio.period" class="text-xxs text-ink-muted font-mono italic whitespace-nowrap ml-4">
           Fev de 2018 — Ago de 2020
         </span>
       </div>
 
-      <p class="text-accent-700 text-xs uppercase tracking-wider font-bold mb-3">
+      <p data-i18n="exp.panizio.role" class="text-accent-700 text-xs uppercase tracking-wider font-bold mb-3">
         Técnico de Suporte
       </p>
 
       <div class="space-y-4">
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1">
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Desenvolvimento e manutenção do website institucional da empresa.</li>
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Suporte técnico aos sistemas utilizados pela organização.</li>
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Criação de documentação técnica para apoio aos usuários.</li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.panizio.duty.0">Desenvolvimento e manutenção do website institucional da empresa.</span></li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.panizio.duty.1">Suporte técnico aos sistemas utilizados pela organização.</span></li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.panizio.duty.2">Criação de documentação técnica para apoio aos usuários.</span></li>
         </ul>
       </div>
     </div>
@@ -181,19 +133,19 @@ import { BriefcaseBusiness } from "@lucide/astro";
         <h3 class="text-ink-title font-bold text-sm sm:text-base">
           Apetit Serviços de Alimentação
         </h3>
-        <span class="text-xxs text-ink-muted font-mono italic whitespace-nowrap ml-4">
+        <span data-i18n="exp.apetit.period" class="text-xxs text-ink-muted font-mono italic whitespace-nowrap ml-4">
           Mai de 2016 — Dez de 2016
         </span>
       </div>
 
-      <p class="text-accent-700 text-xs uppercase tracking-wider font-bold mb-3">
+      <p data-i18n="exp.apetit.role" class="text-accent-700 text-xs uppercase tracking-wider font-bold mb-3">
         Estagiário de TI
       </p>
 
       <div class="space-y-4">
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1">
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Suporte técnico aos usuários e sistemas internos da empresa.</li>
-          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span>Auxílio na manutenção básica de equipamentos e infraestrutura de TI.</li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.apetit.duty.0">Suporte técnico aos usuários e sistemas internos da empresa.</span></li>
+          <li class="text-ink-body text-xs flex gap-2"><span class="text-accent-600">»</span><span data-i18n="exp.apetit.duty.1">Auxílio na manutenção básica de equipamentos e infraestrutura de TI.</span></li>
         </ul>
       </div>
     </div>

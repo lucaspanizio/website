@@ -1,4 +1,4 @@
-﻿---
+---
 import { Award } from '@lucide/astro';
 import CourseItem from '../../../components/course-item.astro';
 ---
@@ -10,10 +10,11 @@ import CourseItem from '../../../components/course-item.astro';
     class="text-accent-700 border-edge-faint font-black tracking-widest text-xs uppercase mb-6 border-b pb-2 flex items-center gap-2"
   >
     <Award size={14} />
-    CURSOS E CERTIFICAÇÕES
+    <span data-i18n="course.title">CURSOS E CERTIFICAÇÕES</span>
   </h2>
-  <div class="divide-y divide-slate-100">
+  <div class="divide-y divide-edge-faint">
     <CourseItem
+      i18nPrefix="course.0"
       title="Node.js"
       institution="Rocketseat"
       period="Em andamento · 73h"
@@ -21,6 +22,7 @@ import CourseItem from '../../../components/course-item.astro';
     />
 
     <CourseItem
+      i18nPrefix="course.1"
       title="Next.js"
       institution="Rocketseat"
       period="2026 · 45h"
@@ -28,6 +30,7 @@ import CourseItem from '../../../components/course-item.astro';
     />
 
     <CourseItem
+      i18nPrefix="course.2"
       title="Angular"
       institution="Rocketseat"
       period="Jan 2026 · 11h"
@@ -35,6 +38,7 @@ import CourseItem from '../../../components/course-item.astro';
     />
 
     <CourseItem
+      i18nPrefix="course.3"
       title="Tailwind CSS"
       institution="Origamid"
       period="Ago 2025 · 16h"
@@ -42,6 +46,7 @@ import CourseItem from '../../../components/course-item.astro';
     />
 
     <CourseItem
+      i18nPrefix="course.4"
       title="Javascript ES6"
       institution="Origamid"
       period="Jul 2025 · 74h"
@@ -49,6 +54,7 @@ import CourseItem from '../../../components/course-item.astro';
     />
 
     <CourseItem
+      i18nPrefix="course.5"
       title="React Profissional"
       institution="Udemy"
       period="Abr 2025 · 27h"
@@ -56,6 +62,7 @@ import CourseItem from '../../../components/course-item.astro';
     />
 
     <CourseItem
+      i18nPrefix="course.6"
       title="React.js"
       institution="Rocketseat"
       period="Mar 2025 · 50h"
@@ -63,6 +70,7 @@ import CourseItem from '../../../components/course-item.astro';
     />
 
     <CourseItem
+      i18nPrefix="course.7"
       title="Comunicação e Oratória"
       institution="Retoricamente"
       period="Set 2023 · 16h"
