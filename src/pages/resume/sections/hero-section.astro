@@ -1,9 +1,10 @@
 ---
 import { Github, Phone, Mail, BriefcaseBusiness, Linkedin } from '@lucide/astro';
-import SocialLink from './social-link.astro';
+
+import SocialLink from '../../../components/social-link.astro';
 ---
 
-<div
+<section
   class="bg-surface border-edge mb-6 p-8 rounded-lg border shadow-xl print:shadow-none print:border-edge-soft print-break-inside-avoid"
 >
   <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-x-10 gap-y-6">
@@ -89,7 +90,7 @@ import SocialLink from './social-link.astro';
       />
     </div>
   </div>
-</div>
+</section>
 
 <script>
   const toggle = document.getElementById('about-toggle') as HTMLButtonElement | null;
