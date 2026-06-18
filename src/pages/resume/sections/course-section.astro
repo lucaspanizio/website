@@ -3,15 +3,14 @@ import { Award } from '@lucide/astro';
 import CourseItem from '../../../components/course-item.astro';
 ---
 
-<aside
-  class="h-full bg-surface border-edge border p-6 rounded-lg shadow-xl print:shadow-none print:border-edge-soft"
->
+<aside class="h-full bg-surface border-edge border p-6 rounded-lg shadow-xl">
   <h2
     class="text-accent-700 border-edge-faint font-black tracking-widest text-xs uppercase mb-6 border-b pb-2 flex items-center gap-2"
   >
     <Award size={14} />
     <span data-i18n="course.title">CURSOS E CERTIFICAÇÕES</span>
   </h2>
+
   <div class="divide-y divide-edge-faint">
     <CourseItem
       i18nPrefix="course.0"
@@ -23,6 +22,14 @@ import CourseItem from '../../../components/course-item.astro';
 
     <CourseItem
       i18nPrefix="course.1"
+      title="Dev com IA: Claude Code, Codex e Cursor"
+      institution="Rocketseat"
+      period="2026 · 10h"
+      description="Curso sobre como otimizar o uso de ferramentas de IA como Claude Code, Codex e Cursor, com foco em automação de tarefas, geração de código e integração com fluxos de trabalho de desenvolvimento."
+    />
+
+    <CourseItem
+      i18nPrefix="course.2"
       title="Next.js"
       institution="Rocketseat"
       period="2026 · 45h"
@@ -30,7 +37,7 @@ import CourseItem from '../../../components/course-item.astro';
     />
 
     <CourseItem
-      i18nPrefix="course.2"
+      i18nPrefix="course.3"
       title="Angular"
       institution="Rocketseat"
       period="Jan 2026 · 11h"
@@ -38,7 +45,7 @@ import CourseItem from '../../../components/course-item.astro';
     />
 
     <CourseItem
-      i18nPrefix="course.3"
+      i18nPrefix="course.4"
       title="Tailwind CSS"
       institution="Origamid"
       period="Ago 2025 · 16h"
@@ -46,7 +53,7 @@ import CourseItem from '../../../components/course-item.astro';
     />
 
     <CourseItem
-      i18nPrefix="course.4"
+      i18nPrefix="course.5"
       title="Javascript ES6"
       institution="Origamid"
       period="Jul 2025 · 74h"
@@ -54,7 +61,7 @@ import CourseItem from '../../../components/course-item.astro';
     />
 
     <CourseItem
-      i18nPrefix="course.5"
+      i18nPrefix="course.6"
       title="React Profissional"
       institution="Udemy"
       period="Abr 2025 · 27h"
@@ -62,7 +69,7 @@ import CourseItem from '../../../components/course-item.astro';
     />
 
     <CourseItem
-      i18nPrefix="course.6"
+      i18nPrefix="course.7"
       title="React.js"
       institution="Rocketseat"
       period="Mar 2025 · 50h"
@@ -70,7 +77,7 @@ import CourseItem from '../../../components/course-item.astro';
     />
 
     <CourseItem
-      i18nPrefix="course.7"
+      i18nPrefix="course.8"
       title="Comunicação e Oratória"
       institution="Retoricamente"
       period="Set 2023 · 16h"
