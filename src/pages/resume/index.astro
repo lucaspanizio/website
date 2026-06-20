@@ -7,6 +7,7 @@ import HeroSection from './sections/hero-section.astro';
 import CourseSection from './sections/course-section.astro';
 import GraduationSection from './sections/graduation-section.astro';
 import ExperienceSection from './sections/experience-section.astro';
+import ProjectSection from './sections/project-section.astro';
 ---
 
 <Layout
@@ -15,19 +16,19 @@ import ExperienceSection from './sections/experience-section.astro';
 >
   <Header />
 
-  <main class="max-w-[1200px] mx-auto px-4 pt-24 pb-10">
+  <main class="max-w-[1200px] mx-auto px-4 pt-24 pb-8">
     <HeroSection />
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-strech">
-      <div class="lg:col-span-7 space-y-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      <div class="lg:col-span-7 flex flex-col gap-6">
         <GraduationSection />
         <ExperienceSection />
-      </div>
+      </div>      
       
-      <div class="lg:col-span-5">
-        <CourseSection />
-      </div>
+     <CourseSection />
     </div>
+
+    <ProjectSection />
   </main>
 
   <Footer />

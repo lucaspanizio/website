@@ -40,7 +40,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: theme('colors.accent.600');
+  background: theme('colors.accent.700');
 }
 
 h2 {

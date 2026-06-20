@@ -41,7 +41,13 @@ import { Printer } from '@lucide/astro';
     },
 
     t(key: string): string {
-      return translations[this.lang]?.[key] ?? key;
+      const parts = key.split('.');
+      let node: unknown = translations[this.lang];
+      for (const part of parts) {
+        if (typeof node !== 'object' || node === null) return key;
+        node = (node as Record<string, unknown>)[part];
+      }
+      return typeof node === 'string' ? node : key;
     },
 
     apply(): void {

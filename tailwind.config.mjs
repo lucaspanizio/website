@@ -8,9 +8,9 @@ export default {
         accent: {
           50: '#eff6ff',
           100: '#dbeafe',
-          400: '#60a5fa',
-          600: '#2563eb',
-          700: '#1d4ed8',
+          400: '#93c5fd',
+          600: '#3b82f6',
+          700: '#2563eb',
         },
 
         // Success (emerald) — seção Impacto & Resultados

@@ -3,15 +3,15 @@ import { Award } from '@lucide/astro';
 import CourseItem from '../../../components/course-item.astro';
 ---
 
-<aside class="h-full bg-surface border-edge border p-6 rounded-lg shadow-xl">
+<aside class="lg:col-span-5 h-full bg-surface border-edge border p-6 rounded-lg shadow-xl">
   <h2
-    class="text-accent-700 border-edge-faint font-black tracking-widest text-xs uppercase mb-6 border-b pb-2 flex items-center gap-2"
+    class="text-accent-600 border-edge-faint font-black tracking-widest text-xs uppercase mb-6 border-b pb-2 flex items-center gap-2"
   >
     <Award size={14} />
     <span data-i18n="course.title">CURSOS E CERTIFICAÇÕES</span>
   </h2>
 
-  <div class="divide-y divide-edge-faint">
+  <div class="divide-y divide-edge-faint space-y-4">
     <CourseItem
       i18nPrefix="course.0"
       title="Node.js"
@@ -22,9 +22,9 @@ import CourseItem from '../../../components/course-item.astro';
 
     <CourseItem
       i18nPrefix="course.1"
-      title="Dev com IA: Claude Code, Codex e Cursor"
+      title="Dev com IA"
       institution="Rocketseat"
-      period="2026 · 10h"
+      period="Jun 2026 · 10h"
       description="Curso sobre como otimizar o uso de ferramentas de IA como Claude Code, Codex e Cursor, com foco em automação de tarefas, geração de código e integração com fluxos de trabalho de desenvolvimento."
     />
 
@@ -32,7 +32,7 @@ import CourseItem from '../../../components/course-item.astro';
       i18nPrefix="course.2"
       title="Next.js"
       institution="Rocketseat"
-      period="2026 · 45h"
+      period="Fev 2026 · 45h"
       description="Curso voltado ao desenvolvimento de aplicações com Next.js, abordando SSR, SSG, ISR, roteamento via pages e app router e Server Components."
     />
 
