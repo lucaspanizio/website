@@ -1,0 +1,85 @@
+---
+import { FileText, Menu, X } from '@lucide/astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<header
+  id="home-nav"
+  class="fixed top-0 left-0 right-0 h-16 z-50 flex items-center bg-surface/80 backdrop-blur-md border-b border-edge transition-all"
+>
+  <div class="max-w-6xl mx-auto w-full px-6 flex items-center justify-between">
+    <a
+      href={base}
+      class="font-black text-base bg-gradient-to-r from-accent-600 to-pink-600 bg-clip-text text-transparent tracking-tight"
+      style="font-family: 'Press Start 2P', monospace; font-size: 12px;"
+    >
+      &lt;panizio /&gt;
+    </a>
+
+    <nav class="hidden md:flex items-center gap-1">
+      <a href="#sobre" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim">Sobre</a>
+      <a href="#projetos" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim">Projetos</a>
+      <a href="#contato" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim">Contato</a>
+      <a
+        href={`${base}resume`}
+        class="ml-3 flex items-center gap-2 bg-surface-dark hover:bg-surface-darker text-white px-4 py-2 rounded-full text-xs font-bold transition-all shadow-sm"
+      >
+        <FileText size={13} />
+        Currículo
+      </a>
+    </nav>
+
+    <button
+      id="menu-toggle"
+      class="md:hidden p-2 text-ink-body hover:text-accent-600 transition-colors"
+      aria-label="Abrir menu"
+    >
+      <span id="icon-menu"><Menu size={20} /></span>
+      <span id="icon-close" class="hidden"><X size={20} /></span>
+    </button>
+  </div>
+</header>
+
+<div
+  id="mobile-menu"
+  class="fixed top-16 left-0 right-0 z-40 bg-surface border-b border-edge shadow-lg hidden md:hidden"
+>
+  <nav class="flex flex-col px-6 py-2">
+    <a href="#sobre" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors">Sobre</a>
+    <a href="#projetos" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors">Projetos</a>
+    <a href="#contato" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors">Contato</a>
+    <a href={`${base}resume`} class="px-3 py-3.5 text-sm font-bold text-accent-600 flex items-center gap-2">
+      <FileText size={14} />
+      Currículo
+    </a>
+  </nav>
+</div>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconClose = document.getElementById('icon-close');
+
+  function closeMenu() {
+    menu?.classList.add('hidden');
+    iconMenu?.classList.remove('hidden');
+    iconClose?.classList.add('hidden');
+  }
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      menu?.classList.remove('hidden');
+      iconMenu?.classList.add('hidden');
+      iconClose?.classList.remove('hidden');
+    }
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>

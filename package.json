@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "author": "José Lucas Panizio <lucaspanizio@gmail.com>",
+  "description": "Website para aparesentação pessoal, portifólio, currículo e meios de contato.",
   "repository": {
     "type": "git",
     "url": "https://github.com/lucaspanizio/website.git"
