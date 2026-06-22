@@ -1,12 +1,15 @@
 ﻿---
-import { Github, Phone, Mail, BriefcaseBusiness, Linkedin } from '@lucide/astro';
+import { Mail, BriefcaseBusiness } from '@lucide/astro';
+import GithubIcon from '@/components/icons/GithubIcon.astro';
+import LinkedinIcon from '@/components/icons/LinkedinIcon.astro';
+import WhatsappIcon from '@/components/icons/WhatsappIcon.astro';
 import SocialLink from '@/components/social-link.astro';
 ---
 
 <section class="bg-surface border-edge mb-6 p-8 rounded-lg border shadow-xl grid grid-cols-1 md:grid-cols-[1fr_auto] gap-x-10 gap-y-6">
   <div class="space-y-2">
     <h1 class="text-accent-600 text-xl sm:text-2xl font-black uppercase tracking-wide">
-      JOSÉ LUCAS PANIZIO
+      José Lucas Panizio
     </h1>
 
     <p class="text-ink-subtle font-mono text-sm sm:text-base italic" data-i18n="hero.role"></p>
@@ -45,19 +48,19 @@ import SocialLink from '@/components/social-link.astro';
       title="LinkedIn"
       username="lucaspanizio"
       url="https://linkedin.com/in/lucaspanizio"
-      icon={Linkedin}
+      icon={LinkedinIcon}
     />
     <SocialLink
       title="GitHub"
       username="lucaspanizio"
       url="https://github.com/lucaspanizio"
-      icon={Github}
+      icon={GithubIcon}
     />
     <SocialLink
       title="WhatsApp"
       username="+55 43 99625-5495"
       url="https://wa.me/5543996255495"
-      icon={Phone}
+      icon={WhatsappIcon}
     />
     <SocialLink
       title="Email"

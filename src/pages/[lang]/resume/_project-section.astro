@@ -1,5 +1,6 @@
 ﻿---
-import { FolderGit2, Github, ExternalLink } from '@lucide/astro';
+import { FolderGit2, ExternalLink } from '@lucide/astro';
+import GithubIcon from '@/components/icons/GithubIcon.astro';
 
 interface Project {
   slug: string;
@@ -54,7 +55,7 @@ const typeStyle: Record<Project['type'], string> = {
           </div>
           <div class="flex gap-2 shrink-0 mt-0.5">
             <a href={project.repo} target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-accent-700 transition-colors" title="GitHub">
-              <Github size={14} />
+              <GithubIcon size={14} />
             </a>
             {project.demo && (
               <a href={project.demo} target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-accent-700 transition-colors" title="Demo">

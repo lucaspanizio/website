@@ -1,11 +1,12 @@
 ﻿---
 import { ExternalLink } from '@lucide/astro';
+import type { AstroComponent } from '@lucide/astro';
 
 interface Props {
   title: string;
   url: string;
   username?: string;
-  icon: typeof ExternalLink;
+  icon: AstroComponent;
 }
 
 const { title, url, username, icon: Icon } = Astro.props;
