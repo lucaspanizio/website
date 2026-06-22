@@ -1,23 +1,30 @@
-﻿---
+---
 import '../../styles/global.css';
+import { translations } from '../../i18n/translations';
+import type { Lang } from '../../i18n/utils';
 
 interface Props {
   title?: string;
   description?: string;
+  lang?: Lang;
 }
 
 const {
   title = 'Panizio Dev',
-  description = 'Website para aparesentação pessoal, portifólio, currículo e meios de contato.',
+  description = 'Website para apresentação pessoal, portifólio, currículo e meios de contato.',
+  lang = 'pt',
 } = Astro.props;
+
+const htmlLang = lang === 'en' ? 'en' : 'pt-BR';
+const tr = translations[lang];
 ---
 
 <!doctype html>
-<html lang="pt-BR">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -25,24 +32,18 @@ const {
     <meta name="author" content="José Lucas Panizio" />
     <meta name="creator" content="José Lucas Panizio" />
     <meta name="robots" content="index, follow" />
-    <meta name="language" content="Portuguese" />
-    
+    <meta name="language" content={lang === 'en' ? 'English' : 'Portuguese'} />
+
     <!-- Open Graph -->
     <meta property="og:type" content="profile" />
-    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'pt_BR'} />
     <meta property="og:url" content="https://panizio.is-a.dev" />
-    <meta property="og:site_name" content="José Lucas Panizio - Desenvolvedor Front-end" />
+    <meta property="og:site_name" content="José Lucas Panizio" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    
+
     <!-- Canonical -->
     <link rel="canonical" href="https://panizio.is-a.dev" />
-    
-    <!-- Lang sync (runs before render to avoid flash) -->
-    <script is:inline>
-      var _lang = localStorage.getItem('resume-lang') || 'pt';
-      document.documentElement.lang = _lang === 'en' ? 'en' : 'pt-BR';
-    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -51,9 +52,36 @@ const {
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <script is:inline define:vars={{ tr }}>window.__i18n = tr;</script>
   </head>
 
   <body class="min-h-screen flex flex-col selection:bg-accent-600 selection:text-white">
     <slot />
+    <script is:inline>
+      (function () {
+        var tr = window.__i18n;
+        if (!tr) return;
+        function resolve(key) {
+          return key.split('.').reduce(function (o, k) {
+            return o && typeof o === 'object' ? o[k] : undefined;
+          }, tr);
+        }
+        function applyAttr(dataAttr, setFn) {
+          document.querySelectorAll('[' + dataAttr + ']').forEach(function (el) {
+            var v = resolve(el.getAttribute(dataAttr));
+            if (typeof v === 'string') setFn(el, v);
+          });
+        }
+        applyAttr('data-i18n', function (el, v) { el.textContent = v; });
+        applyAttr('data-i18n-placeholder', function (el, v) { el.placeholder = v; });
+        applyAttr('data-i18n-aria-label', function (el, v) { el.setAttribute('aria-label', v); });
+        applyAttr('data-i18n-title', function (el, v) { el.title = v; });
+        applyAttr('data-i18n-read-more', function (el, v) { el.dataset.readMore = v; });
+        applyAttr('data-i18n-read-less', function (el, v) { el.dataset.readLess = v; });
+        applyAttr('data-i18n-submit-text', function (el, v) { el.dataset.submitText = v; });
+        applyAttr('data-i18n-sending-text', function (el, v) { el.dataset.sendingText = v; });
+      })();
+    </script>
   </body>
 </html>

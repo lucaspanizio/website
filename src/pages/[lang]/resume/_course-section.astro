@@ -1,0 +1,36 @@
+﻿---
+import { Award } from '@lucide/astro';
+import CourseItem from '../../../components/course-item.astro';
+
+const courses = [
+  { index: '0', institution: 'Rocketseat' },
+  { index: '1', institution: 'Rocketseat' },
+  { index: '2', institution: 'Rocketseat' },
+  { index: '3', institution: 'Rocketseat' },
+  { index: '4', institution: 'Origamid' },
+  { index: '5', institution: 'Origamid' },
+  { index: '6', institution: 'Udemy' },
+  { index: '7', institution: 'Rocketseat' },
+  { index: '8', institution: 'Retoricamente' },
+];
+---
+
+<aside class="lg:col-span-5 h-full bg-surface border-edge border p-6 rounded-lg shadow-xl">
+  <h2
+    class="text-accent-600 border-edge-faint font-black tracking-widest text-xs uppercase mb-6 border-b pb-2 flex items-center gap-2"
+  >
+    <Award size={14} />
+    <span data-i18n="course.title"></span>
+  </h2>
+
+  <div class="divide-y divide-edge-faint space-y-4">
+    {courses.map(({ index, institution }) => (
+      <CourseItem
+        titleKey={`course.${index}.title`}
+        periodKey={`course.${index}.period`}
+        descKey={`course.${index}.desc`}
+        institution={institution}
+      />
+    ))}
+  </div>
+</aside>

@@ -1,7 +1,12 @@
 ---
 import { FileText, Menu, X } from '@lucide/astro';
+import { getLangFromUrl, getRelativeLangUrl } from '../../i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
 const base = import.meta.env.BASE_URL;
+const ptUrl = getRelativeLangUrl(Astro.url, 'pt', base);
+const enUrl = getRelativeLangUrl(Astro.url, 'en', base);
+const resumeUrl = `${base}${lang}/resume/`;
 ---
 
 <header
@@ -10,7 +15,7 @@ const base = import.meta.env.BASE_URL;
 >
   <div class="max-w-6xl mx-auto w-full px-6 flex items-center justify-between">
     <a
-      href={base}
+      href={`${base}${lang}/`}
       class="font-black text-base bg-gradient-to-r from-accent-600 to-pink-600 bg-clip-text text-transparent tracking-tight"
       style="font-family: 'Press Start 2P', monospace; font-size: 12px;"
     >
@@ -18,22 +23,26 @@ const base = import.meta.env.BASE_URL;
     </a>
 
     <nav class="hidden md:flex items-center gap-1">
-      <a href="#sobre" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim">Sobre</a>
-      <a href="#projetos" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim">Projetos</a>
-      <a href="#contato" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim">Contato</a>
+      <a href="#about" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim" data-i18n="home.nav.about"></a>
+      <a href="#projects" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim" data-i18n="home.nav.projects"></a>
+      <a href="#contact" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim" data-i18n="home.nav.contact"></a>
       <a
-        href={`${base}resume`}
+        href={resumeUrl}
         class="ml-3 flex items-center gap-2 bg-surface-dark hover:bg-surface-darker text-white px-4 py-2 rounded-full text-xs font-bold transition-all shadow-sm"
       >
         <FileText size={13} />
-        Currículo
+        <span data-i18n="home.nav.resume"></span>
       </a>
+      <div class="ml-2 bg-surface border-edge shadow-sm flex items-center border rounded-full overflow-hidden p-0.5">
+        <a href={ptUrl} class={`px-3 py-1 rounded-full text-xs font-bold transition-all ${lang === 'pt' ? 'bg-accent-600 text-white' : 'text-ink-subtle hover:text-ink-body'}`}>PT</a>
+        <a href={enUrl} class={`px-3 py-1 rounded-full text-xs font-bold transition-all ${lang === 'en' ? 'bg-accent-600 text-white' : 'text-ink-subtle hover:text-ink-body'}`}>EN</a>
+      </div>
     </nav>
 
     <button
       id="menu-toggle"
       class="md:hidden p-2 text-ink-body hover:text-accent-600 transition-colors"
-      aria-label="Abrir menu"
+      data-i18n-aria-label="home.nav.menu_aria"
     >
       <span id="icon-menu"><Menu size={20} /></span>
       <span id="icon-close" class="hidden"><X size={20} /></span>
@@ -46,13 +55,17 @@ const base = import.meta.env.BASE_URL;
   class="fixed top-16 left-0 right-0 z-40 bg-surface border-b border-edge shadow-lg hidden md:hidden"
 >
   <nav class="flex flex-col px-6 py-2">
-    <a href="#sobre" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors">Sobre</a>
-    <a href="#projetos" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors">Projetos</a>
-    <a href="#contato" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors">Contato</a>
-    <a href={`${base}resume`} class="px-3 py-3.5 text-sm font-bold text-accent-600 flex items-center gap-2">
+    <a href="#about" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors" data-i18n="home.nav.about"></a>
+    <a href="#projects" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors" data-i18n="home.nav.projects"></a>
+    <a href="#contact" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors" data-i18n="home.nav.contact"></a>
+    <a href={resumeUrl} class="px-3 py-3.5 text-sm font-bold text-accent-600 flex items-center gap-2 border-b border-edge-faint">
       <FileText size={14} />
-      Currículo
+      <span data-i18n="home.nav.resume"></span>
     </a>
+    <div class="px-3 py-3.5 flex gap-2">
+      <a href={ptUrl} class={`px-3 py-1 rounded-full text-xs font-bold border transition-all ${lang === 'pt' ? 'bg-accent-600 text-white border-accent-600' : 'border-edge text-ink-subtle hover:text-ink-body'}`}>PT</a>
+      <a href={enUrl} class={`px-3 py-1 rounded-full text-xs font-bold border transition-all ${lang === 'en' ? 'bg-accent-600 text-white border-accent-600' : 'border-edge text-ink-subtle hover:text-ink-body'}`}>EN</a>
+    </div>
   </nav>
 </div>
 

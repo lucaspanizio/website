@@ -204,6 +204,61 @@ export const translations: Record<Lang, DeepRecord> = {
         desc: 'Laboratório de exploração de Module Federation e Web Components integrando React, Angular e Vue.',
       },
     },
+
+    home: {
+      page_title: 'Lucas Panizio — Desenvolvedor Frontend',
+      page_desc: 'Portfolio de José Lucas Panizio, Desenvolvedor Frontend com mais de 4 anos de experiência em React e TypeScript.',
+      nav: {
+        about: 'Sobre',
+        projects: 'Projetos',
+        contact: 'Contato',
+        resume: 'Currículo',
+        menu_aria: 'Abrir menu',
+      },
+      hero: {
+        greeting: 'Olá, eu sou',
+        desc: 'Construo aplicações web com React e TypeScript, focado em performance, qualidade de código e experiência do usuário. 4+ anos de experiência.',
+        scroll_aria: 'Rolar para baixo',
+      },
+      about: {
+        section_label: 'Sobre mim',
+        title: 'Dev Frontend',
+        subtitle: 'apaixonado por qualidade',
+        paragraph1: 'Desenvolvedor Frontend com mais de 4 anos de experiência na construção e evolução de aplicações web com React e TypeScript, com foco em performance, qualidade de código e experiência do usuário, sempre alinhado às necessidades do produto.',
+        paragraph2: 'Atuo em times ágeis, participando de discussões técnicas, definição de padrões, code reviews e treinamentos internos. Atualmente venho me aprofundando em Node.js com o objetivo de evoluir para um perfil fullstack.',
+        see_resume: 'Ver currículo completo →',
+      },
+      skills: {
+        tools: 'Ferramentas',
+      },
+      projects: {
+        filter_all: 'Todos',
+        repo_title: 'Repositório',
+        demo_title: 'Demo online',
+        see_all: 'Ver todos no GitHub',
+      },
+      contact: {
+        section_label: 'Contato',
+        heading: 'Vamos conversar?',
+        description: 'Tem um projeto em mente, uma oportunidade para compartilhar ou quer trocar uma ideia? Estou disponível, escolha o canal que preferir.',
+        form_name: 'Nome',
+        form_name_ph: 'Seu nome',
+        form_email: 'Email',
+        form_email_ph: 'seu@email.com',
+        form_message: 'Mensagem',
+        form_message_ph: 'Como posso te ajudar?',
+        form_submit: 'Enviar mensagem',
+        form_sending: 'Enviando...',
+        success_title: 'Mensagem enviada!',
+        success_body: 'Obrigado pelo contato. Responderei em breve.',
+        success_close: 'Fechar',
+      },
+    },
+
+    resume: {
+      page_title: 'Currículo — Panizio Dev',
+      page_desc: 'Confira meu currículo.',
+    },
   },
 
   en: {
@@ -406,6 +461,61 @@ export const translations: Record<Lang, DeepRecord> = {
         name: 'MF Lab',
         desc: 'Laboratory exploring Module Federation and Web Components integrating React, Angular, and Vue.',
       },
+    },
+
+    home: {
+      page_title: 'Lucas Panizio — Frontend Developer',
+      page_desc: 'Portfolio of José Lucas Panizio, Frontend Developer with 4+ years of experience in React and TypeScript.',
+      nav: {
+        about: 'About',
+        projects: 'Projects',
+        contact: 'Contact',
+        resume: 'Resume',
+        menu_aria: 'Open menu',
+      },
+      hero: {
+        greeting: "Hello, I'm",
+        desc: 'I build web applications with React and TypeScript, focused on performance, code quality, and user experience. 4+ years of experience.',
+        scroll_aria: 'Scroll down',
+      },
+      about: {
+        section_label: 'About me',
+        title: 'Frontend Dev',
+        subtitle: 'passionate about quality',
+        paragraph1: 'Frontend Developer with 4+ years of experience building and evolving web applications with React and TypeScript, focused on performance, code quality, and user experience, always aligned with product needs.',
+        paragraph2: 'I work in agile teams, participating in technical discussions, standard-setting, code reviews, and internal training sessions. I am currently deepening my knowledge of Node.js to evolve into a fullstack role.',
+        see_resume: 'See full resume →',
+      },
+      skills: {
+        tools: 'Tools',
+      },
+      projects: {
+        filter_all: 'All',
+        repo_title: 'Repository',
+        demo_title: 'Live demo',
+        see_all: 'See all on GitHub',
+      },
+      contact: {
+        section_label: 'Contact',
+        heading: "Let's talk?",
+        description: "Have a project in mind, an opportunity to share, or want to exchange ideas? I'm available — choose your preferred channel.",
+        form_name: 'Name',
+        form_name_ph: 'Your name',
+        form_email: 'Email',
+        form_email_ph: 'your@email.com',
+        form_message: 'Message',
+        form_message_ph: 'How can I help you?',
+        form_submit: 'Send message',
+        form_sending: 'Sending...',
+        success_title: 'Message sent!',
+        success_body: "Thank you for reaching out. I'll reply soon.",
+        success_close: 'Close',
+      },
+    },
+
+    resume: {
+      page_title: 'Resume — Panizio Dev',
+      page_desc: 'Check out my resume.',
     },
   },
 };
