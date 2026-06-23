@@ -1,29 +1,32 @@
 ---
 import '@/styles/global.css';
-import { translations } from '@/i18n/translations';
 import type { Lang } from '@/i18n/utils';
+import { translations } from '@/i18n/translations';
 
 interface Props {
   title?: string;
+  titleKey?: string;
   description?: string;
   lang?: Lang;
 }
 
 const {
   title = 'Panizio Dev',
+  titleKey,
   description = 'Website para apresentação pessoal, portifólio, currículo e meios de contato.',
   lang = 'pt',
 } = Astro.props;
 
 const htmlLang = lang === 'en' ? 'en' : 'pt-BR';
-const tr = translations[lang];
 ---
 
 <!doctype html>
-<html lang={htmlLang}>
+<html lang={htmlLang} data-title-key={titleKey} translate="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
+    <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}favicon.png`} />
 
     <!-- SEO -->
     <title>{title}</title>
@@ -45,34 +48,105 @@ const tr = translations[lang];
     <!-- Canonical -->
     <link rel="canonical" href="https://panizio.is-a.dev" />
 
-    <script is:inline define:vars={{ tr }}>window.__i18n = tr;</script>
+    <script is:inline define:vars={{ allTranslations: translations, initLang: lang }}>
+      window.__i18n_all = allTranslations;
+      window.__currentLang = initLang;
+    </script>
   </head>
 
   <body class="min-h-screen flex flex-col selection:bg-accent-600 selection:text-white">
     <slot />
     <script is:inline>
       (function () {
-        var tr = window.__i18n;
-        if (!tr) return;
-        function resolve(key) {
+        var all = window.__i18n_all;
+        var currentLang = window.__currentLang || 'pt';
+
+        function resolve(tr, key) {
           return key.split('.').reduce(function (o, k) {
             return o && typeof o === 'object' ? o[k] : undefined;
           }, tr);
         }
-        function applyAttr(dataAttr, setFn) {
-          document.querySelectorAll('[' + dataAttr + ']').forEach(function (el) {
-            var v = resolve(el.getAttribute(dataAttr));
-            if (typeof v === 'string') setFn(el, v);
+
+        function applyTranslations(tr) {
+          var titleKey = document.documentElement.dataset.titleKey;
+          if (titleKey) {
+            var newTitle = resolve(tr, titleKey);
+            if (newTitle) document.title = newTitle;
+          }
+
+          var attrs = [
+            ['data-i18n', function (el, v) { el.textContent = v; }],
+            ['data-i18n-placeholder', function (el, v) { el.placeholder = v; }],
+            ['data-i18n-aria-label', function (el, v) { el.setAttribute('aria-label', v); }],
+            ['data-i18n-title', function (el, v) { el.title = v; }],
+            ['data-i18n-read-more', function (el, v) { el.dataset.readMore = v; }],
+            ['data-i18n-read-less', function (el, v) { el.dataset.readLess = v; }],
+          ];
+          attrs.forEach(function (pair) {
+            document.querySelectorAll('[' + pair[0] + ']').forEach(function (el) {
+              var v = resolve(tr, el.getAttribute(pair[0]));
+              if (typeof v === 'string') pair[1](el, v);
+            });
           });
         }
-        applyAttr('data-i18n', function (el, v) { el.textContent = v; });
-        applyAttr('data-i18n-placeholder', function (el, v) { el.placeholder = v; });
-        applyAttr('data-i18n-aria-label', function (el, v) { el.setAttribute('aria-label', v); });
-        applyAttr('data-i18n-title', function (el, v) { el.title = v; });
-        applyAttr('data-i18n-read-more', function (el, v) { el.dataset.readMore = v; });
-        applyAttr('data-i18n-read-less', function (el, v) { el.dataset.readLess = v; });
-        applyAttr('data-i18n-submit-text', function (el, v) { el.dataset.submitText = v; });
-        applyAttr('data-i18n-sending-text', function (el, v) { el.dataset.sendingText = v; });
+
+        function updateLangUI(newLang) {
+          document.documentElement.lang = newLang === 'en' ? 'en' : 'pt-BR';
+
+          document.querySelectorAll('[data-switch-lang]').forEach(function (el) {
+            var isActive = el.dataset.switchLang === newLang;
+            var on = (el.dataset.activeClasses || '').split(' ').filter(Boolean);
+            var off = (el.dataset.inactiveClasses || '').split(' ').filter(Boolean);
+            if (isActive) {
+              on.forEach(function (c) { el.classList.add(c); });
+              off.forEach(function (c) { el.classList.remove(c); });
+            } else {
+              off.forEach(function (c) { el.classList.add(c); });
+              on.forEach(function (c) { el.classList.remove(c); });
+            }
+          });
+
+          document.querySelectorAll('[data-lang-href]').forEach(function (el) {
+            el.href = el.dataset.langHref.replace('{lang}', newLang);
+          });
+        }
+
+        function switchLang(newLang, url) {
+          currentLang = newLang;
+          window.__currentLang = newLang;
+          localStorage.setItem('lang', newLang);
+          applyTranslations(all[newLang]);
+          updateLangUI(newLang);
+          if (url) history.pushState({ lang: newLang }, '', url);
+        }
+
+        // Marca estado inicial para o popstate funcionar
+        history.replaceState({ lang: currentLang }, '', location.href);
+
+        // Aplica traduções iniciais
+        applyTranslations(all[currentLang]);
+
+        // Intercepta cliques nos botões PT/EN
+        document.addEventListener('click', function (e) {
+          var btn = e.target.closest('[data-switch-lang]');
+          if (!btn) return;
+          e.preventDefault();
+          var newLang = btn.dataset.switchLang;
+          if (!newLang || !all[newLang] || newLang === currentLang) return;
+          switchLang(newLang, btn.href);
+        });
+
+        // Suporta botão voltar/avançar do browser
+        window.addEventListener('popstate', function (e) {
+          var lang = (e.state && e.state.lang)
+            || (location.pathname.match(/\/(pt|en)\//) || [])[1]
+            || 'pt';
+          currentLang = lang;
+          window.__currentLang = lang;
+          localStorage.setItem('lang', lang);
+          applyTranslations(all[lang]);
+          updateLangUI(lang);
+        });
       })();
     </script>
   </body>

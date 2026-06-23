@@ -1,5 +1,7 @@
 ﻿---
 import { Mail, FolderGit2, ExternalLink, MapPin } from '@lucide/astro';
+import { Image } from "astro:assets";
+
 import GithubIcon from '@/components/icons/GithubIcon.astro';
 import LinkedinIcon from '@/components/icons/LinkedinIcon.astro';
 import WhatsappIcon from '@/components/icons/WhatsappIcon.astro';
@@ -58,6 +60,7 @@ const filterTypes = ['all', 'frontend', 'backend', 'mobile', 'library'] as const
 
 <Layout
   title={tr.home.page_title}
+  titleKey="home.page_title"
   description={tr.home.page_desc}
   lang={lang}
 >
@@ -66,7 +69,7 @@ const filterTypes = ['all', 'frontend', 'backend', 'mobile', 'library'] as const
   <!-- HERO -->
   <section
     id="hero"
-    class="relative min-h-screen flex flex-col items-center justify-center pt-16 px-6 text-center overflow-hidden"
+    class="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-4 px-6 text-center overflow-hidden"
   >
     <div
       class="absolute inset-0 -z-10"
@@ -77,32 +80,46 @@ const filterTypes = ['all', 'frontend', 'backend', 'mobile', 'library'] as const
     <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-surface-tint to-transparent -z-10 pointer-events-none"></div>
 
     <div class="max-w-3xl mx-auto space-y-8">
-      <div class="space-y-3">
+      <div class="space-y-4">
         <p class="text-accent-600 font-mono text-sm font-bold tracking-[0.3em] uppercase" data-i18n="home.hero.greeting"></p>
-        <h1 class="text-5xl md:text-7xl font-black text-ink-title leading-tight">
-          José Lucas
-          <span class="block bg-gradient-to-r from-accent-600 to-pink-600 bg-clip-text text-transparent">
-            Panizio
-          </span>
-        </h1>
-        <p class="text-base md:text-lg text-ink-subtle font-mono italic" data-i18n="hero.role"></p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <Image
+            src={`${base}avatar.webp`}
+            alt="Lucas Panizio"
+            width={200}
+            height={200}
+            format="webp"
+            decoding="async"
+            fetchpriority="high"
+            class="rounded-full object-cover ring-2 ring-edge ring-offset-2 shadow-md shrink-0"
+          />
+          <div class="text-center sm:text-left space-y-1">
+            <h1 class="text-4xl md:text-6xl font-black text-ink-title leading-tight">
+              José Lucas
+              <span class="block bg-gradient-to-r from-accent-600 to-pink-600 bg-clip-text text-transparent">
+                Panizio
+              </span>
+            </h1>
+            <p class="text-base md:text-lg text-ink-subtle font-mono italic" data-i18n="hero.role"></p>
+          </div>
+        </div>
       </div>
 
       <p class="text-ink-body text-base md:text-lg leading-relaxed max-w-2xl mx-auto" data-i18n="home.hero.desc"></p>
 
       <div class="flex gap-3 justify-center">
-        <a href="https://github.com/lucaspanizio" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-accent-600 hover:border-accent-600 transition-all shadow-sm">
+        <a href="https://github.com/lucaspanizio" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-gray-900 hover:border-gray-900 transition-all shadow-sm">
           <GithubIcon size={18} />
         </a>
         <a href="https://linkedin.com/in/lucaspanizio" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-accent-600 hover:border-accent-600 transition-all shadow-sm">
           <LinkedinIcon size={18} />
         </a>
-        <a href="https://wa.me/5543996255495" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-accent-600 hover:border-accent-600 transition-all shadow-sm">
+        <a href="https://wa.me/5543996255495" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-green-600 hover:border-green-400 transition-all shadow-sm">
           <WhatsappIcon size={18} aria-hidden="true" />
         </a>
-        <a href="mailto:lucaspanizio@gmail.com" aria-label="Email" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-accent-600 hover:border-accent-600 transition-all shadow-sm">
+        <button id="hero-email-copy" aria-label="Email" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-red-600 hover:border-red-500 transition-all shadow-sm cursor-pointer">
           <Mail size={18} />
-        </a>
+        </button>
       </div>
 
       <div class="pt-4 flex justify-center">
@@ -128,9 +145,7 @@ const filterTypes = ['all', 'frontend', 'backend', 'mobile', 'library'] as const
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div class="space-y-5">
-          <h3 class="text-3xl font-black text-ink-title leading-snug">
-            <span data-i18n="home.about.title"></span><br />
-            <span class="text-accent-600" data-i18n="home.about.subtitle"></span>
+          <h3 data-i18n="home.about.title" class="text-3xl font-black text-ink-title leading-snug">
           </h3>
 
           <p class="text-ink-body leading-relaxed" data-i18n="home.about.paragraph1"></p>
@@ -152,9 +167,10 @@ const filterTypes = ['all', 'frontend', 'backend', 'mobile', 'library'] as const
 
         <div class="space-y-6">
           {[
-            { category: 'Frontend', items: ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Next.js', 'Astro', 'Tailwind CSS', 'Styled Components'] },
-            { category: 'Backend', items: ['Node.js', 'REST APIs'] },
-            { category: tr.home.skills.tools, items: ['Git', 'GitHub Actions', 'CI/CD', 'Storybook', 'Jest', 'Vitest', 'Vite'] },
+            { category: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Astro', 'Tailwind CSS', 'Styled Components'] },
+            { category: 'Backend', items: ['Node.js', 'Delphi', 'SQL', 'Prisma ORM', 'REST APIs'] },
+            { category: tr.home.skills.tools, items: ['Git', 'GitHub Actions', 'Docker', 'Vite', 'Vitest', 'Jest', 'Testing Library', 'Storybook'] },
+            { category: tr.home.skills.libraries, items: ['React Router Dom', 'React Hook Form', 'Zod', 'Tanstack Query', 'Zustand'] },
           ].map((group) => (
             <div>
               <p class="text-xs font-bold tracking-widest uppercase text-ink-muted mb-3">
@@ -274,128 +290,64 @@ const filterTypes = ['all', 'frontend', 'backend', 'mobile', 'library'] as const
         <div class="h-px bg-edge flex-1"></div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div class="space-y-6">
-          <div class="space-y-3">
-            <h3 class="text-3xl font-black text-ink-title" data-i18n="home.contact.heading"></h3>
-            <p class="text-ink-body leading-relaxed" data-i18n="home.contact.description"></p>
+      <div class="max-w-xl mx-auto text-center mb-6 space-y-4">
+        <h3 class="text-3xl font-black text-ink-title" data-i18n="home.contact.heading"></h3>
+        <p class="text-ink-body leading-relaxed" data-i18n="home.contact.description"></p>        
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+        <a href="https://wa.me/5543996255495" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-surface-tint border border-edge rounded-xl hover:border-green-400 hover:shadow-sm">
+          <div class="p-3 bg-green-50 rounded-lg text-green-600">
+            <WhatsappIcon size={22} aria-hidden="true" />
           </div>
-
-          <div class="space-y-3">
-            <a href="https://wa.me/5543996255495" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 bg-surface-tint border border-edge rounded-xl hover:border-green-400 hover:shadow-sm transition-all group">
-              <div class="p-2.5 bg-green-50 rounded-lg text-green-600 group-hover:bg-green-100 transition-colors shrink-0">
-                <WhatsappIcon size={20} aria-hidden="true" />
-              </div>
-              <div>
-                <p class="font-bold text-sm text-ink-title">WhatsApp</p>
-                <p class="text-xs text-ink-muted font-mono">+55 43 99625-5495</p>
-              </div>
-            </a>
-
-            <a href="https://linkedin.com/in/lucaspanizio" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 bg-surface-tint border border-edge rounded-xl hover:border-accent-600 hover:shadow-sm transition-all group">
-              <div class="p-2.5 bg-accent-50 rounded-lg text-accent-600 group-hover:bg-accent-100 transition-colors shrink-0">
-                <LinkedinIcon size={20} />
-              </div>
-              <div>
-                <p class="font-bold text-sm text-ink-title">LinkedIn</p>
-                <p class="text-xs text-ink-muted font-mono">/in/lucaspanizio</p>
-              </div>
-            </a>
-
-            <a href="mailto:lucaspanizio@gmail.com" class="flex items-center gap-4 p-4 bg-surface-tint border border-edge rounded-xl hover:border-accent-600 hover:shadow-sm transition-all group">
-              <div class="p-2.5 bg-surface-dim rounded-lg text-ink-muted group-hover:bg-accent-50 group-hover:text-accent-600 transition-colors shrink-0">
-                <Mail size={20} />
-              </div>
-              <div>
-                <p class="font-bold text-sm text-ink-title">Email</p>
-                <p class="text-xs text-ink-muted font-mono">lucaspanizio@gmail.com</p>
-              </div>
-            </a>
-
-            <a href="https://github.com/lucaspanizio" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 bg-surface-tint border border-edge rounded-xl hover:border-accent-600 hover:shadow-sm transition-all group">
-              <div class="p-2.5 bg-surface-dim rounded-lg text-ink-muted group-hover:bg-accent-50 group-hover:text-accent-600 transition-colors shrink-0">
-                <GithubIcon size={20} />
-              </div>
-              <div>
-                <p class="font-bold text-sm text-ink-title">GitHub</p>
-                <p class="text-xs text-ink-muted font-mono">/lucaspanizio</p>
-              </div>
-            </a>
+          <div>
+            <p class="font-bold text-sm text-ink-title">WhatsApp</p>
+            <p class="text-xs text-ink-muted font-mono">+55 43 99625-5495</p>
           </div>
-        </div>
+        </a>
 
-        <div class="bg-surface-tint border border-edge rounded-2xl p-6 md:p-8">
-          <h3 class="text-lg font-black text-ink-title mb-6" data-i18n="home.contact.form_submit"></h3>
-          <form
-            id="contact-form"
-            class="space-y-4"
-            action="https://formspree.io/f/xzdlpqoj"
-            method="POST"
-          >
-            <div>
-              <label class="block text-xs font-bold text-ink-muted mb-1.5 uppercase tracking-wider" data-i18n="home.contact.form_name"></label>
-              <input
-                type="text"
-                name="name"
-                required
-                data-i18n-placeholder="home.contact.form_name_ph"
-                class="w-full bg-surface border border-edge rounded-lg px-4 py-2.5 text-sm text-ink-body placeholder:text-ink-subtle focus:outline-none focus:border-accent-600 transition-colors"
-              />
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-ink-muted mb-1.5 uppercase tracking-wider" data-i18n="home.contact.form_email"></label>
-              <input
-                type="email"
-                name="email"
-                required
-                data-i18n-placeholder="home.contact.form_email_ph"
-                class="w-full bg-surface border border-edge rounded-lg px-4 py-2.5 text-sm text-ink-body placeholder:text-ink-subtle focus:outline-none focus:border-accent-600 transition-colors"
-              />
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-ink-muted mb-1.5 uppercase tracking-wider" data-i18n="home.contact.form_message"></label>
-              <textarea
-                name="message"
-                required
-                rows={5}
-                data-i18n-placeholder="home.contact.form_message_ph"
-                class="w-full bg-surface border border-edge rounded-lg px-4 py-2.5 text-sm text-ink-body placeholder:text-ink-subtle focus:outline-none focus:border-accent-600 transition-colors resize-none"
-              ></textarea>
-            </div>
-            <button
-              id="submit-btn"
-              type="submit"
-              data-i18n="home.contact.form_submit"
-              data-i18n-submit-text="home.contact.form_submit"
-              data-i18n-sending-text="home.contact.form_sending"
-              class="w-full bg-accent-600 hover:bg-accent-700 text-white py-3 rounded-lg font-bold text-sm transition-all shadow-sm"
-            ></button>
-          </form>
-        </div>
+        <a href="https://linkedin.com/in/lucaspanizio" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-surface-tint border border-edge rounded-xl hover:border-accent-600 hover:shadow-sm">
+          <div class="p-3 bg-accent-50 rounded-lg text-accent-600">
+            <LinkedinIcon size={22} />
+          </div>
+          <div>
+            <p class="font-bold text-sm text-ink-title">LinkedIn</p>
+            <p class="text-xs text-ink-muted font-mono">/in/lucaspanizio</p>
+          </div>
+        </a>
+
+        <button id="contact-email-copy" class="flex items-center gap-4 p-5 bg-surface-tint border border-edge rounded-xl hover:border-red-500 hover:shadow-sm transition-all text-left cursor-pointer w-full">
+          <div class="p-3 bg-rose-50 rounded-lg text-red-600 shrink-0">
+            <Mail size={22} />
+          </div>
+          <div>
+            <p class="font-bold text-sm text-ink-title">Email</p>
+            <p class="text-xs text-ink-muted font-mono">lucaspanizio@gmail.com</p>
+          </div>
+        </button>
+
+        <a href="https://github.com/lucaspanizio" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-surface-tint border border-edge rounded-xl hover:border-gray-900 hover:shadow-sm">
+          <div class="p-3 bg-surface-dim rounded-lg text-gray-900">
+            <GithubIcon size={22} />
+          </div>
+          <div>
+            <p class="font-bold text-sm text-ink-title">GitHub</p>
+            <p class="text-xs text-ink-muted font-mono">/lucaspanizio</p>
+          </div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Success modal -->
   <div
-    id="success-modal"
-    class="fixed inset-0 z-[100] hidden"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modal-title"
+    id="copy-toast"
+    role="status"
+    aria-live="polite"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[200] pointer-events-none opacity-0 translate-y-2 transition-all duration-300"
   >
-    <div class="absolute inset-0 bg-surface-dark/60 backdrop-blur-sm" id="modal-backdrop"></div>
-    <div class="relative flex items-center justify-center h-full p-4">
-      <div class="bg-surface rounded-2xl p-8 max-w-sm w-full shadow-2xl text-center space-y-4">
-        <div class="text-5xl">✅</div>
-        <h3 id="modal-title" class="text-xl font-black text-ink-title" data-i18n="home.contact.success_title"></h3>
-        <p class="text-ink-body text-sm leading-relaxed" data-i18n="home.contact.success_body"></p>
-        <button
-          id="close-modal"
-          class="bg-accent-600 hover:bg-accent-700 text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all"
-          data-i18n="home.contact.success_close"
-        ></button>
-      </div>
+    <div class="bg-surface-dark text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-xl flex items-center gap-2">
+      <span class="text-success-400">✓</span>
+      <span data-i18n="home.hero.email_copied"></span>
     </div>
   </div>
 
@@ -431,48 +383,32 @@ const filterTypes = ['all', 'frontend', 'backend', 'mobile', 'library'] as const
     });
   });
 
-  // Success modal
-  const modal = document.getElementById('success-modal') as HTMLElement;
-  const backdrop = document.getElementById('modal-backdrop');
-  const closeBtn = document.getElementById('close-modal');
+  // Email copy to clipboard
+  const toast = document.getElementById('copy-toast');
+  let toastTimer: ReturnType<typeof setTimeout> | null = null;
 
-  function openModal() { modal.classList.remove('hidden'); }
-  function closeModal() { modal.classList.add('hidden'); }
-
-  closeBtn?.addEventListener('click', closeModal);
-  backdrop?.addEventListener('click', closeModal);
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-
-  // Contact form
-  const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  const submitBtn = form?.querySelector<HTMLButtonElement>('#submit-btn');
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    if (!submitBtn) return;
-    const submitText = submitBtn.dataset.submitText ?? '';
-    const sendingText = submitBtn.dataset.sendingText ?? '...';
-
-    submitBtn.textContent = sendingText;
-    submitBtn.disabled = true;
-
+  async function copyEmail() {
     try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
-      });
-
-      if (res.ok) {
-        openModal();
-        const message = form.elements.namedItem('message') as HTMLTextAreaElement;
-        message.value = '';
-        message.focus();
-      }
-    } finally {
-      submitBtn.textContent = submitText;
-      submitBtn.disabled = false;
+      await navigator.clipboard.writeText('lucaspanizio@gmail.com');
+    } catch {
+      const tmp = document.createElement('input');
+      tmp.value = 'lucaspanizio@gmail.com';
+      document.body.appendChild(tmp);
+      tmp.select();
+      document.execCommand('copy');
+      document.body.removeChild(tmp);
     }
-  });
+
+    if (!toast) return;
+    if (toastTimer) clearTimeout(toastTimer);
+    toast.classList.remove('opacity-0', 'translate-y-2');
+    toast.classList.add('opacity-100', 'translate-y-0');
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('opacity-100', 'translate-y-0');
+      toast.classList.add('opacity-0', 'translate-y-2');
+    }, 2000);
+  }
+
+  document.getElementById('hero-email-copy')?.addEventListener('click', copyEmail);
+  document.getElementById('contact-email-copy')?.addEventListener('click', copyEmail);
 </script>

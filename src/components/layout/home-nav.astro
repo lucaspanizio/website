@@ -16,6 +16,7 @@ const resumeUrl = `${base}${lang}/resume/`;
   <div class="max-w-6xl mx-auto w-full px-6 flex items-center justify-between">
     <a
       href={`${base}${lang}/`}
+      data-lang-href={`${base}{lang}/`}
       class="font-black text-base bg-gradient-to-r from-accent-600 to-pink-600 bg-clip-text text-transparent tracking-tight"
       style="font-family: 'Press Start 2P', monospace; font-size: 12px;"
     >
@@ -28,14 +29,15 @@ const resumeUrl = `${base}${lang}/resume/`;
       <a href="#contact" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim" data-i18n="home.nav.contact"></a>
       <a
         href={resumeUrl}
+        data-lang-href={`${base}{lang}/resume/`}
         class="ml-3 flex items-center gap-2 bg-surface-dark hover:bg-surface-darker text-white px-4 py-2 rounded-full text-xs font-bold transition-all shadow-sm"
       >
         <FileText size={13} />
         <span data-i18n="home.nav.resume"></span>
       </a>
       <div class="ml-2 bg-surface border-edge shadow-sm flex items-center border rounded-full overflow-hidden p-0.5">
-        <a href={ptUrl} class={`px-3 py-1 rounded-full text-xs font-bold transition-all ${lang === 'pt' ? 'bg-accent-600 text-white' : 'text-ink-subtle hover:text-ink-body'}`}>PT</a>
-        <a href={enUrl} class={`px-3 py-1 rounded-full text-xs font-bold transition-all ${lang === 'en' ? 'bg-accent-600 text-white' : 'text-ink-subtle hover:text-ink-body'}`}>EN</a>
+        <a href={ptUrl} data-switch-lang="pt" data-active-classes="bg-accent-600 text-white" data-inactive-classes="text-ink-subtle hover:text-ink-body" class={`px-3 py-1 rounded-full text-xs font-bold transition-all ${lang === 'pt' ? 'bg-accent-600 text-white' : 'text-ink-subtle hover:text-ink-body'}`}>PT</a>
+        <a href={enUrl} data-switch-lang="en" data-active-classes="bg-accent-600 text-white" data-inactive-classes="text-ink-subtle hover:text-ink-body" class={`px-3 py-1 rounded-full text-xs font-bold transition-all ${lang === 'en' ? 'bg-accent-600 text-white' : 'text-ink-subtle hover:text-ink-body'}`}>EN</a>
       </div>
     </nav>
 
@@ -58,13 +60,13 @@ const resumeUrl = `${base}${lang}/resume/`;
     <a href="#about" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors" data-i18n="home.nav.about"></a>
     <a href="#projects" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors" data-i18n="home.nav.projects"></a>
     <a href="#contact" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors" data-i18n="home.nav.contact"></a>
-    <a href={resumeUrl} class="px-3 py-3.5 text-sm font-bold text-accent-600 flex items-center gap-2 border-b border-edge-faint">
+    <a href={resumeUrl} data-lang-href={`${base}{lang}/resume/`} class="px-3 py-3.5 text-sm font-bold text-accent-600 flex items-center gap-2 border-b border-edge-faint">
       <FileText size={14} />
       <span data-i18n="home.nav.resume"></span>
     </a>
     <div class="px-3 py-3.5 flex gap-2">
-      <a href={ptUrl} class={`px-3 py-1 rounded-full text-xs font-bold border transition-all ${lang === 'pt' ? 'bg-accent-600 text-white border-accent-600' : 'border-edge text-ink-subtle hover:text-ink-body'}`}>PT</a>
-      <a href={enUrl} class={`px-3 py-1 rounded-full text-xs font-bold border transition-all ${lang === 'en' ? 'bg-accent-600 text-white border-accent-600' : 'border-edge text-ink-subtle hover:text-ink-body'}`}>EN</a>
+      <a href={ptUrl} data-switch-lang="pt" data-active-classes="bg-accent-600 text-white border-accent-600" data-inactive-classes="border-edge text-ink-subtle hover:text-ink-body" class={`px-3 py-1 rounded-full text-xs font-bold border transition-all ${lang === 'pt' ? 'bg-accent-600 text-white border-accent-600' : 'border-edge text-ink-subtle hover:text-ink-body'}`}>PT</a>
+      <a href={enUrl} data-switch-lang="en" data-active-classes="bg-accent-600 text-white border-accent-600" data-inactive-classes="border-edge text-ink-subtle hover:text-ink-body" class={`px-3 py-1 rounded-full text-xs font-bold border transition-all ${lang === 'en' ? 'bg-accent-600 text-white border-accent-600' : 'border-edge text-ink-subtle hover:text-ink-body'}`}>EN</a>
     </div>
   </nav>
 </div>

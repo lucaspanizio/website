@@ -30,7 +30,7 @@
   --color-edge: #e2e8f0;
   --color-edge-soft: #cbd5e1;
 
-  --font-size-xxs: 0.6875rem;
+  --text-xxs: 0.6875rem;
 }
 
 @layer base {

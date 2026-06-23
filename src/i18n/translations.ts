@@ -9,21 +9,17 @@ export const translations: Record<Lang, DeepRecord> = {
     },
 
     hero: {
-      role: 'Desenvolvedor Frontend',
+      role: 'Desenvolvedor de Software',
       about1:
-        'Desenvolvedor Frontend com mais de 4 anos de experiência na construção e evolução de aplicações web com React e TypeScript, com foco em performance, qualidade de código e experiência do usuário, sempre alinhado às necessidades do produto.',
+        'Atuo principalmente no frontend, construindo e evoluindo aplicações web com React e TypeScript, com foco em performance, qualidade de código e experiência do usuário, sempre alinhado às necessidades do produto.',
       about2:
-        'Atuo em times ágeis, participando de discussões técnicas, definição de padrões, code reviews e treinamentos internos, contribuindo para a qualidade das entregas e a evolução contínua das aplicações e do time. Atualmente venho me aprofundando em Node.js com o objetivo de evoluir para um perfil fullstack.',
+        'Também participo de discussões técnicas, code reviews, definição de padrões, e iniciativas que contribuem para a evolução contínua dos produtos. Paralelamente, venho aprofundando meus conhecimentos em Node.js para expandir minha atuação no backend.',
       about_short:
-        'Desenvolvedor Frontend com mais de 4 anos de experiência na construção e evolução de aplicações web com React e TypeScript, com foco em performance, qualidade de código e experiência do usuário.',
+        'Atuo principalmente no frontend, construindo e evoluindo aplicações web com React e TypeScript, com foco em performance, qualidade de código e experiência do usuário, sempre alinhado às necessidades do produto.',
       about_rest:
-        'Atuo em times ágeis, participando de discussões técnicas, definição de padrões, code reviews e treinamentos internos, contribuindo para a qualidade das entregas e a evolução contínua das aplicações e do time. Atualmente venho me aprofundando em Node.js com o objetivo de evoluir para um perfil fullstack.',
+        'Também participo de discussões técnicas, code reviews, definição de padrões, e iniciativas que contribuem para a evolução contínua dos produtos. Paralelamente, venho aprofundando meus conhecimentos em Node.js para expandir minha atuação no backend.',
       read_more: 'ver mais...',
       read_less: 'ver menos',
-    },
-
-    footer: {
-      text: 'José Lucas Panizio - Desenvolvedor Front-end',
     },
 
     grad: {
@@ -206,8 +202,9 @@ export const translations: Record<Lang, DeepRecord> = {
     },
 
     home: {
-      page_title: 'Lucas Panizio — Desenvolvedor Frontend',
-      page_desc: 'Portfolio de José Lucas Panizio, Desenvolvedor Frontend com mais de 4 anos de experiência em React e TypeScript.',
+      page_title: 'Início | Panizio Dev',
+      page_desc:
+        'Portfolio de José Lucas Panizio, Desenvolvedor Frontend com mais de 4 anos de experiência em React e TypeScript.',
       nav: {
         about: 'Sobre',
         projects: 'Projetos',
@@ -217,19 +214,22 @@ export const translations: Record<Lang, DeepRecord> = {
       },
       hero: {
         greeting: 'Olá, eu sou',
-        desc: 'Construo aplicações web com React e TypeScript, focado em performance, qualidade de código e experiência do usuário. 4+ anos de experiência.',
+        desc: 'Mais de 4 anos desenvolvendo software com um olhar que vai além da demanda, equilibrando qualidade técnica, experiência do desenvolvedor e a evolução contínua dos produtos.',
         scroll_aria: 'Rolar para baixo',
+        email_copied: 'Email copiado!',
       },
       about: {
         section_label: 'Sobre mim',
-        title: 'Dev Frontend',
-        subtitle: 'apaixonado por qualidade',
-        paragraph1: 'Desenvolvedor Frontend com mais de 4 anos de experiência na construção e evolução de aplicações web com React e TypeScript, com foco em performance, qualidade de código e experiência do usuário, sempre alinhado às necessidades do produto.',
-        paragraph2: 'Atuo em times ágeis, participando de discussões técnicas, definição de padrões, code reviews e treinamentos internos. Atualmente venho me aprofundando em Node.js com o objetivo de evoluir para um perfil fullstack.',
+        title: 'Qualidade, clareza e evolução contínua',
+        paragraph1:
+          'Atuando principalmente no frontend, construo e evoluo aplicações web com React e TypeScript, com foco em performance, qualidade de código e experiência do usuário, sempre alinhado às necessidades do produto.',
+        paragraph2:
+          'Também participo de discussões técnicas, code reviews, definição de padrões, e iniciativas que contribuem para a evolução contínua dos produtos. Paralelamente, venho aprofundando meus conhecimentos em Node.js para expandir minha atuação no backend.',
         see_resume: 'Ver currículo completo →',
       },
       skills: {
         tools: 'Ferramentas',
+        libraries: 'Bibliotecas',
       },
       projects: {
         filter_all: 'Todos',
@@ -240,23 +240,14 @@ export const translations: Record<Lang, DeepRecord> = {
       contact: {
         section_label: 'Contato',
         heading: 'Vamos conversar?',
-        description: 'Tem um projeto em mente, uma oportunidade para compartilhar ou quer trocar uma ideia? Estou disponível, escolha o canal que preferir.',
-        form_name: 'Nome',
-        form_name_ph: 'Seu nome',
-        form_email: 'Email',
-        form_email_ph: 'seu@email.com',
-        form_message: 'Mensagem',
-        form_message_ph: 'Como posso te ajudar?',
-        form_submit: 'Enviar mensagem',
-        form_sending: 'Enviando...',
-        success_title: 'Mensagem enviada!',
-        success_body: 'Obrigado pelo contato. Responderei em breve.',
-        success_close: 'Fechar',
+        description:
+          'Estou sempre aberto a conversar sobre projetos, oportunidades e desenvolvimento de software. Se acredita que podemos construir algo interessante juntos, escolha o canal que preferir.',
+        availability: 'Aberto a novas oportunidades',
       },
     },
 
     resume: {
-      page_title: 'Currículo — Panizio Dev',
+      page_title: 'Currículo | Panizio Dev',
       page_desc: 'Confira meu currículo.',
     },
   },
@@ -267,21 +258,17 @@ export const translations: Record<Lang, DeepRecord> = {
     },
 
     hero: {
-      role: 'Frontend Developer',
+      role: 'Software Developer',
       about1:
-        'Frontend Developer with 4+ years of experience building and evolving web applications with React and TypeScript, focused on performance, code quality, and user experience, always aligned with product needs.',
+        'I primarily work on the frontend, building and evolving web applications with React and TypeScript, focused on performance, code quality, and user experience, always aligned with product needs.',
       about2:
-        'I work in agile teams, participating in technical discussions, standard-setting, code reviews, and internal training sessions, contributing to delivery quality and the continuous growth of both applications and the team. I am currently deepening my knowledge of Node.js to evolve into a fullstack role.',
+        'I also take part in technical discussions, code reviews, standard-setting, and initiatives that contribute to the continuous evolution of products. In parallel, I have been deepening my knowledge of Node.js to expand my work on the backend.',
       about_short:
-        'Frontend Developer with 4+ years of experience building and evolving web applications with React and TypeScript, focused on performance, code quality, and user experience.',
+        'I primarily work on the frontend, building and evolving web applications with React and TypeScript, focused on performance, code quality, and user experience, always aligned with product needs.',
       about_rest:
-        'I work in agile teams, participating in technical discussions, standard-setting, code reviews, and internal training sessions, contributing to delivery quality and the continuous growth of both applications and the team. I am currently deepening my knowledge of Node.js to evolve into a fullstack role.',
+        'I also take part in technical discussions, code reviews, standard-setting, and initiatives that contribute to the continuous evolution of products. In parallel, I have been deepening my knowledge of Node.js to expand my work on the backend.',
       read_more: 'read more...',
       read_less: 'read less',
-    },
-
-    footer: {
-      text: 'José Lucas Panizio - Front-end Developer',
     },
 
     grad: {
@@ -464,8 +451,9 @@ export const translations: Record<Lang, DeepRecord> = {
     },
 
     home: {
-      page_title: 'Lucas Panizio — Frontend Developer',
-      page_desc: 'Portfolio of José Lucas Panizio, Frontend Developer with 4+ years of experience in React and TypeScript.',
+      page_title: 'Home | Panizio Dev',
+      page_desc:
+        'Portfolio of José Lucas Panizio, Frontend Developer with 4+ years of experience in React and TypeScript.',
       nav: {
         about: 'About',
         projects: 'Projects',
@@ -475,19 +463,22 @@ export const translations: Record<Lang, DeepRecord> = {
       },
       hero: {
         greeting: "Hello, I'm",
-        desc: 'I build web applications with React and TypeScript, focused on performance, code quality, and user experience. 4+ years of experience.',
+        desc: '4+ years developing software with a view that goes beyond the immediate ask, balancing technical quality, developer experience, and the continuous evolution of products.',
         scroll_aria: 'Scroll down',
+        email_copied: 'Email copied!',
       },
       about: {
         section_label: 'About me',
-        title: 'Frontend Dev',
-        subtitle: 'passionate about quality',
-        paragraph1: 'Frontend Developer with 4+ years of experience building and evolving web applications with React and TypeScript, focused on performance, code quality, and user experience, always aligned with product needs.',
-        paragraph2: 'I work in agile teams, participating in technical discussions, standard-setting, code reviews, and internal training sessions. I am currently deepening my knowledge of Node.js to evolve into a fullstack role.',
+        title: 'Quality, clarity and continuous growth',
+        paragraph1:
+          'Primarily working on the frontend, I build and evolve web applications with React and TypeScript, focused on performance, code quality, and user experience, always aligned with product needs.',
+        paragraph2:
+          "I also take part in technical discussions, code reviews, standard-setting, and initiatives that drive continuous product evolution. In parallel, I've been deepening my Node.js knowledge to expand into backend development.",
         see_resume: 'See full resume →',
       },
       skills: {
         tools: 'Tools',
+        libraries: 'Libraries',
       },
       projects: {
         filter_all: 'All',
@@ -498,23 +489,14 @@ export const translations: Record<Lang, DeepRecord> = {
       contact: {
         section_label: 'Contact',
         heading: "Let's talk?",
-        description: "Have a project in mind, an opportunity to share, or want to exchange ideas? I'm available — choose your preferred channel.",
-        form_name: 'Name',
-        form_name_ph: 'Your name',
-        form_email: 'Email',
-        form_email_ph: 'your@email.com',
-        form_message: 'Message',
-        form_message_ph: 'How can I help you?',
-        form_submit: 'Send message',
-        form_sending: 'Sending...',
-        success_title: 'Message sent!',
-        success_body: "Thank you for reaching out. I'll reply soon.",
-        success_close: 'Close',
+        description:
+          "I'm always open to talking about projects, opportunities, and software development. If you think we can build something interesting together, choose your preferred channel.",
+        availability: 'Open to new opportunities',
       },
     },
 
     resume: {
-      page_title: 'Resume — Panizio Dev',
+      page_title: 'Resume | Panizio Dev',
       page_desc: 'Check out my resume.',
     },
   },

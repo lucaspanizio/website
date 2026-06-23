@@ -16,12 +16,18 @@ const enUrl = getRelativeLangUrl(Astro.url, 'en', base);
   >
     <a
       href={ptUrl}
+      data-switch-lang="pt"
+      data-active-classes="bg-accent-600 text-white"
+      data-inactive-classes="text-ink-subtle hover:text-ink-body"
       class={`px-3 py-1 rounded-full text-xxs md:text-xs font-bold transition-all ${lang === 'pt' ? 'bg-accent-600 text-white' : 'text-ink-subtle hover:text-ink-body'}`}
     >
       PT
     </a>
     <a
       href={enUrl}
+      data-switch-lang="en"
+      data-active-classes="bg-accent-600 text-white"
+      data-inactive-classes="text-ink-subtle hover:text-ink-body"
       class={`px-3 py-1 rounded-full text-xxs md:text-xs font-bold transition-all ${lang === 'en' ? 'bg-accent-600 text-white' : 'text-ink-subtle hover:text-ink-body'}`}
     >
       EN
