@@ -99,6 +99,22 @@ h2 {
 }
 
 @media print {
+  html.dark {
+    --color-ink-title: #0f172a;
+    --color-ink-strong: #334155;
+    --color-ink-body: #475569;
+    --color-ink-muted: #64748b;
+    --color-ink-subtle: #94a3b8;
+    --color-surface: #ffffff;
+    --color-surface-tint: #f8fafc;
+    --color-surface-dim: #f1f5f9;
+    --color-surface-dark: #0f172a;
+    --color-surface-darker: #1e293b;
+    --color-edge-faint: #f1f5f9;
+    --color-edge: #e2e8f0;
+    --color-edge-soft: #cbd5e1;
+  }
+
   body {
     background-color: #ffffff !important;
     -webkit-print-color-adjust: exact !important;
