@@ -55,7 +55,6 @@ const typeStyle: Record<Project['type'], string> = {
   library: 'bg-surface-tint border-edge text-ink-muted',
 };
 
-const filterTypes = ['all', 'frontend', 'backend', 'mobile', 'library'] as const;
 ---
 
 <Layout
@@ -202,26 +201,10 @@ const filterTypes = ['all', 'frontend', 'backend', 'mobile', 'library'] as const
         <div class="h-px bg-edge flex-1"></div>
       </div>
 
-      <div class="flex flex-wrap gap-2 mb-8">
-        {filterTypes.map((type) => (
-          <button
-            class={`filter-btn px-4 py-2 rounded-full text-xs font-bold border transition-all ${
-              type === 'all'
-                ? 'bg-accent-600 text-white border-accent-600'
-                : 'border-edge text-ink-muted hover:border-accent-600 hover:text-accent-600'
-            }`}
-            data-filter={type}
-          >
-            {type === 'all' ? <span data-i18n="home.projects.filter_all"></span> : type}
-          </button>
-        ))}
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4" id="projects-grid">
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
         {projects.map((project) => (
           <div
-            class="project-card border border-edge-faint rounded-lg p-4 flex flex-col gap-3 hover:border-accent-600/40 hover:shadow-sm transition-all bg-surface"
-            data-type={project.type}
+            class="border border-edge-faint rounded-lg p-4 flex flex-col gap-3 hover:border-accent-600/40 hover:shadow-sm transition-all bg-surface"
           >
             <div class="flex items-start justify-between gap-2">
               <div class="flex items-center gap-2 flex-wrap">
@@ -357,31 +340,6 @@ const filterTypes = ['all', 'frontend', 'backend', 'mobile', 'library'] as const
 <script>
   const lang = document.documentElement.lang.startsWith('pt') ? 'pt' : 'en';
   localStorage.setItem('lang', lang);
-
-  // Project filter
-  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  const projectCards = document.querySelectorAll<HTMLElement>('.project-card');
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
-
-      filterBtns.forEach((b) => {
-        b.classList.remove('bg-accent-600', 'text-white', 'border-accent-600');
-        b.classList.add('border-edge', 'text-ink-muted');
-      });
-      btn.classList.add('bg-accent-600', 'text-white', 'border-accent-600');
-      btn.classList.remove('border-edge', 'text-ink-muted');
-
-      projectCards.forEach((card) => {
-        if (filter === 'all' || card.dataset.type === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    });
-  });
 
   // Email copy to clipboard
   const toast = document.getElementById('copy-toast');
