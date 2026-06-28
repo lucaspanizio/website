@@ -1,0 +1,19 @@
+---
+import { Moon, Sun } from '@lucide/astro';
+import { cn } from '@/lib/cn';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<button
+  data-theme-toggle
+  aria-label="Toggle dark mode"
+  class={cn('cursor-pointer size-8 flex items-center justify-center rounded-full border border-edge bg-surface text-ink-muted hover:text-accent-600 hover:border-accent-600 transition-all', className)}
+>
+  <span class="dark:hidden"><Moon size={15} /></span>
+  <span class="hidden dark:inline-flex"><Sun size={15} /></span>
+</button>

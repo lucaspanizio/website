@@ -1,0 +1,31 @@
+---
+import { getLangFromUrl, getRelativeLangUrl } from '@/i18n/utils';
+import { cn } from '@/lib/cn';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const base = import.meta.env.BASE_URL;
+const ptUrl = getRelativeLangUrl(Astro.url, 'pt', base);
+const enUrl = getRelativeLangUrl(Astro.url, 'en', base);
+---
+
+<div class={cn('bg-surface border-edge shadow-sm flex items-center border rounded-full overflow-hidden p-0.5', className)}>
+  <a
+    href={ptUrl}
+    data-switch-lang="pt"
+    data-active-classes="bg-accent-600 text-white"
+    data-inactive-classes="text-ink-subtle hover:text-ink-body"
+    class={cn('px-3 py-1 rounded-full text-xs font-bold transition-all', lang === 'pt' ? 'bg-accent-600 text-white' : 'text-ink-subtle hover:text-ink-body')}
+  >PT</a>
+  <a
+    href={enUrl}
+    data-switch-lang="en"
+    data-active-classes="bg-accent-600 text-white"
+    data-inactive-classes="text-ink-subtle hover:text-ink-body"
+    class={cn('px-3 py-1 rounded-full text-xs font-bold transition-all', lang === 'en' ? 'bg-accent-600 text-white' : 'text-ink-subtle hover:text-ink-body')}
+  >EN</a>
+</div>

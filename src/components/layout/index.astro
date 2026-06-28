@@ -23,6 +23,13 @@ const htmlLang = lang === 'en' ? 'en' : 'pt-BR';
 <!doctype html>
 <html lang={htmlLang} data-title-key={titleKey} translate="no">
   <head>
+    <script is:inline>
+      (function () {
+        var s = localStorage.getItem('theme');
+        var p = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (s === 'dark' || (!s && p)) document.documentElement.classList.add('dark');
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google" content="notranslate" />

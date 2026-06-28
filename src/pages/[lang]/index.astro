@@ -49,9 +49,9 @@ const projects: Project[] = [
 ];
 
 const typeStyle: Record<Project['type'], string> = {
-  frontend: 'bg-accent-50 border-accent-100 text-accent-700',
-  backend: 'bg-success-50 border-success-100 text-success-700',
-  mobile: 'bg-purple-50 border-purple-100 text-purple-700',
+  frontend: 'bg-accent-50 border-accent-100 text-accent-700 dark:bg-accent-600/20 dark:border-accent-600/30 dark:text-accent-400',
+  backend: 'bg-success-50 border-success-100 text-success-700 dark:bg-success-600/20 dark:border-success-600/30 dark:text-success-400',
+  mobile: 'bg-purple-50 border-purple-100 text-purple-700 dark:bg-purple-600/20 dark:border-purple-600/30 dark:text-purple-400',
   library: 'bg-surface-tint border-edge text-ink-muted',
 };
 
@@ -72,10 +72,10 @@ const typeStyle: Record<Project['type'], string> = {
   >
     <div
       class="absolute inset-0 -z-10"
-      style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 28px 28px;"
+      style="background-image: radial-gradient(var(--color-edge-soft) 1px, transparent 1px); background-size: 28px 28px;"
     ></div>
-    <div class="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-accent-100 opacity-50 blur-3xl -z-10"></div>
-    <div class="absolute -bottom-24 -right-24 w-[420px] h-[420px] rounded-full bg-pink-100 opacity-50 blur-3xl -z-10"></div>
+    <div class="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-accent-100 dark:bg-accent-600/15 opacity-50 blur-3xl -z-10"></div>
+    <div class="absolute -bottom-24 -right-24 w-[420px] h-[420px] rounded-full bg-pink-100 dark:bg-pink-600/15 opacity-50 blur-3xl -z-10"></div>
     <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-surface-tint to-transparent -z-10 pointer-events-none"></div>
 
     <div class="max-w-3xl mx-auto space-y-8">
@@ -99,7 +99,7 @@ const typeStyle: Record<Project['type'], string> = {
                 Panizio
               </span>
             </h1>
-            <p class="text-base md:text-lg text-ink-subtle font-mono italic" data-i18n="hero.role"></p>
+            <p class="text-base md:text-lg text-ink-subtle dark:text-ink-muted font-mono italic" data-i18n="hero.role"></p>
           </div>
         </div>
       </div>
@@ -107,16 +107,16 @@ const typeStyle: Record<Project['type'], string> = {
       <p class="text-ink-body text-base md:text-lg leading-relaxed max-w-2xl mx-auto" data-i18n="home.hero.desc"></p>
 
       <div class="flex gap-3 justify-center">
-        <a href="https://github.com/lucaspanizio" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-gray-900 hover:border-gray-900 transition-all shadow-sm">
+        <a href="https://github.com/lucaspanizio" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-gray-900 hover:border-gray-900 dark:hover:text-accent-600 dark:hover:border-accent-600 transition-all shadow-sm">
           <GithubIcon size={18} />
         </a>
         <a href="https://linkedin.com/in/lucaspanizio" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-accent-600 hover:border-accent-600 transition-all shadow-sm">
           <LinkedinIcon size={18} />
         </a>
-        <a href="https://wa.me/5543996255495" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-green-600 hover:border-green-400 transition-all shadow-sm">
+        <a href="https://wa.me/5543996255495" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-green-600 hover:border-green-400 dark:hover:text-accent-600 dark:hover:border-accent-600 transition-all shadow-sm">
           <WhatsappIcon size={18} aria-hidden="true" />
         </a>
-        <button id="hero-email-copy" aria-label="Email" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-red-600 hover:border-red-500 transition-all shadow-sm cursor-pointer">
+        <button id="hero-email-copy" aria-label="Email" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-red-600 hover:border-red-500 dark:hover:text-accent-600 dark:hover:border-accent-600 transition-all shadow-sm cursor-pointer">
           <Mail size={18} />
         </button>
       </div>
@@ -279,8 +279,8 @@ const typeStyle: Record<Project['type'], string> = {
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-        <a href="https://wa.me/5543996255495" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-surface-tint border border-edge rounded-xl hover:border-green-400 hover:shadow-sm">
-          <div class="p-3 bg-green-50 rounded-lg text-green-600">
+        <a href="https://wa.me/5543996255495" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-surface-tint border border-edge rounded-xl hover:border-green-400 dark:hover:border-accent-600 hover:shadow-sm">
+          <div class="p-3 bg-green-50 dark:bg-green-600/20 rounded-lg text-green-600 dark:text-green-400">
             <WhatsappIcon size={22} aria-hidden="true" />
           </div>
           <div>
@@ -290,7 +290,7 @@ const typeStyle: Record<Project['type'], string> = {
         </a>
 
         <a href="https://linkedin.com/in/lucaspanizio" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-surface-tint border border-edge rounded-xl hover:border-accent-600 hover:shadow-sm">
-          <div class="p-3 bg-accent-50 rounded-lg text-accent-600">
+          <div class="p-3 bg-accent-50 dark:bg-accent-600/20 rounded-lg text-accent-600 dark:text-accent-400">
             <LinkedinIcon size={22} />
           </div>
           <div>
@@ -299,8 +299,8 @@ const typeStyle: Record<Project['type'], string> = {
           </div>
         </a>
 
-        <button id="contact-email-copy" class="flex items-center gap-4 p-5 bg-surface-tint border border-edge rounded-xl hover:border-red-500 hover:shadow-sm transition-all text-left cursor-pointer w-full">
-          <div class="p-3 bg-rose-50 rounded-lg text-red-600 shrink-0">
+        <button id="contact-email-copy" class="flex items-center gap-4 p-5 bg-surface-tint border border-edge rounded-xl hover:border-red-500 dark:hover:border-accent-600 hover:shadow-sm transition-all text-left cursor-pointer w-full">
+          <div class="p-3 bg-rose-50 dark:bg-rose-600/20 rounded-lg text-red-600 dark:text-red-400 shrink-0">
             <Mail size={22} />
           </div>
           <div>
@@ -309,8 +309,8 @@ const typeStyle: Record<Project['type'], string> = {
           </div>
         </button>
 
-        <a href="https://github.com/lucaspanizio" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-surface-tint border border-edge rounded-xl hover:border-gray-900 hover:shadow-sm">
-          <div class="p-3 bg-surface-dim rounded-lg text-gray-900">
+        <a href="https://github.com/lucaspanizio" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-surface-tint border border-edge rounded-xl hover:border-gray-900 dark:hover:border-accent-600 hover:shadow-sm">
+          <div class="p-3 bg-surface-dim rounded-lg text-gray-900 dark:text-gray-200">
             <GithubIcon size={22} />
           </div>
           <div>

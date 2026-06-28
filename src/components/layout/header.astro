@@ -1,38 +1,15 @@
 ---
 import { Printer } from '@lucide/astro';
-import { getLangFromUrl, getRelativeLangUrl } from '@/i18n/utils';
 
-const lang = getLangFromUrl(Astro.url);
-const base = import.meta.env.BASE_URL;
-const ptUrl = getRelativeLangUrl(Astro.url, 'pt', base);
-const enUrl = getRelativeLangUrl(Astro.url, 'en', base);
+import ThemeToggle from '../theme-toggle.astro';
+import LangSwitch from '../lang-switch.astro';
 ---
 
 <header
   class="fixed top-0 left-0 right-0 h-16 z-40 print:hidden flex items-center justify-center gap-3 md:gap-4 px-4 bg-inherit bg-opacity-80 backdrop-blur-md border-b border-edge"
 >
-  <div
-    class="bg-surface border-edge shadow-sm flex items-center border rounded-full overflow-hidden p-0.5"
-  >
-    <a
-      href={ptUrl}
-      data-switch-lang="pt"
-      data-active-classes="bg-accent-600 text-white"
-      data-inactive-classes="text-ink-subtle hover:text-ink-body"
-      class={`px-3 py-1 rounded-full text-xxs md:text-xs font-bold transition-all ${lang === 'pt' ? 'bg-accent-600 text-white' : 'text-ink-subtle hover:text-ink-body'}`}
-    >
-      PT
-    </a>
-    <a
-      href={enUrl}
-      data-switch-lang="en"
-      data-active-classes="bg-accent-600 text-white"
-      data-inactive-classes="text-ink-subtle hover:text-ink-body"
-      class={`px-3 py-1 rounded-full text-xxs md:text-xs font-bold transition-all ${lang === 'en' ? 'bg-accent-600 text-white' : 'text-ink-subtle hover:text-ink-body'}`}
-    >
-      EN
-    </a>
-  </div>
+  <LangSwitch />
+  <ThemeToggle />
   <button
     id="print-btn"
     class="bg-surface-dark hover:bg-surface-darker flex items-center gap-2 px-3 md:px-4 py-1.5 text-white border-none rounded-full text-xxs md:text-xs font-bold transition-all shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
@@ -43,6 +20,13 @@ const enUrl = getRelativeLangUrl(Astro.url, 'en', base);
 </header>
 
 <script>
+  document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  });
+
   const printBtn = document.getElementById('print-btn') as HTMLButtonElement | null;
   if (printBtn) {
     printBtn.addEventListener('click', () => window.print());
