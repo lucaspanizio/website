@@ -214,7 +214,7 @@ export const translations: Record<Lang, DeepRecord> = {
       },
       hero: {
         greeting: 'Olá, eu sou',
-        desc: 'Mais de 4 anos desenvolvendo software com um olhar que vai além da demanda, equilibrando qualidade técnica, experiência do desenvolvedor e a evolução contínua dos produtos.',
+        desc: 'Mais de 4 anos desenvolvendo software, buscando equilibrar qualidade do código, experiência do desenvolvedor e as necessidades do produto.',
         scroll_aria: 'Rolar para baixo',
         email_copied: 'Email copiado!',
       },
@@ -463,7 +463,7 @@ export const translations: Record<Lang, DeepRecord> = {
       },
       hero: {
         greeting: "Hello, I'm",
-        desc: '4+ years developing software with a view that goes beyond the immediate ask, balancing technical quality, developer experience, and the continuous evolution of products.',
+        desc: 'Over 4 years of experience developing software, balancing code quality, developer experience, and product needs.',
         scroll_aria: 'Scroll down',
         email_copied: 'Email copied!',
       },
