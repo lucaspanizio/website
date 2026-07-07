@@ -4,7 +4,6 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  base: '/website/',
   publicDir: 'public',
   output: 'static',
   outDir: './dist',
