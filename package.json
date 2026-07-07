@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "license": "MIT",
   "author": "José Lucas Panizio <lucaspanizio@gmail.com>",
-  "description": "Website para aparesentação pessoal, portifólio, currículo e meios de contato.",
+  "description": "Website para apresentação pessoal, portifólio, currículo e meios de contato.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lucaspanizio/website.git"
+    "url": "git+https://github.com/lucaspanizio/website.git"
   },
   "scripts": {
     "dev": "astro dev",
@@ -22,7 +22,6 @@
     "astro": "^7.0.0"
   },
   "devDependencies": {
-    "playwright": "^1.60.0",
     "tailwindcss": "^4.3.1"
   }
 }
