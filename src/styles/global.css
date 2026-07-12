@@ -88,6 +88,10 @@
   }
 }
 
+.mobile-nav-link {
+  @apply w-full border-b border-edge-faint px-3 py-3.5;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }

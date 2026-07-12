@@ -1,5 +1,5 @@
 ---
-import { Mail, FolderGit2, ExternalLink, MapPin } from '@lucide/astro';
+import { Mail, FolderGit2, ExternalLink, MapPin, FileText, Menu, X } from '@lucide/astro';
 import { Image } from "astro:assets";
 
 import GithubIcon from '@/components/icons/GithubIcon.astro';
@@ -7,10 +7,13 @@ import LinkedinIcon from '@/components/icons/LinkedinIcon.astro';
 import WhatsappIcon from '@/components/icons/WhatsappIcon.astro';
 
 import Layout from '@/components/layout/index.astro';
-import HomeNav from '@/components/layout/home-nav.astro';
+import Header from '@/components/layout/header.astro';
 import Footer from '@/components/layout/footer.astro';
+import Button from '@/components/button.astro';
+import ThemeToggle from '@/components/theme-toggle.astro';
 
 const base = import.meta.env.BASE_URL;
+const resumeUrl = `${base}resume/`;
 
 interface Project {
   slug: string;
@@ -51,7 +54,53 @@ const typeStyle: Record<Project['type'], string> = {
   title="Início | Panizio Dev"
   description="Portfolio de José Lucas Panizio, Desenvolvedor Frontend com mais de 4 anos de experiência em React e TypeScript."
 >
-  <HomeNav />
+  <Header id="home-nav" class="z-50">
+    <a
+      href={base}
+      class="font-black text-base bg-gradient-to-r from-accent-600 to-pink-600 bg-clip-text text-transparent tracking-tight"
+      style="font-family: 'Press Start 2P', monospace; font-size: 12px;"
+    >
+      &lt;panizio /&gt;
+    </a>
+
+    <nav class="hidden md:flex items-center gap-1">
+      <Button as="a" href="#about" variant="ghost">Sobre</Button>
+      <Button as="a" href="#projects" variant="ghost">Projetos</Button>
+      <Button as="a" href="#contact" variant="ghost">Contato</Button>
+      <Button as="a" href={resumeUrl} variant="primary">
+        <FileText size={13} />
+        <span>Currículo</span>
+      </Button>
+      <ThemeToggle class="ml-3" />
+    </nav>
+
+    <button
+      id="menu-toggle"
+      class="md:hidden p-2 text-ink-body hover:text-accent-600 transition-colors"
+      aria-label="Abrir menu"
+    >
+      <span id="icon-menu"><Menu size={20} /></span>
+      <span id="icon-close" class="hidden"><X size={20} /></span>
+    </button>
+  </Header>
+
+  <div
+    id="mobile-menu"
+    class="fixed top-16 left-0 right-0 z-40 bg-surface border-b border-edge shadow-lg hidden md:hidden"
+  >
+    <nav class="flex flex-col px-6 py-2">
+      <Button as="a" href="#about" variant="ghost" class="mobile-nav-link">Sobre</Button>
+      <Button as="a" href="#projects" variant="ghost" class="mobile-nav-link">Projetos</Button>
+      <Button as="a" href="#contact" variant="ghost" class="mobile-nav-link">Contato</Button>
+      <a href={resumeUrl} class="px-3 py-3.5 text-sm font-bold text-accent-600 flex items-center gap-2 border-b border-edge-faint">
+        <FileText size={14} />
+        <span>Currículo</span>
+      </a>
+      <div class="px-3 py-3.5 flex items-center gap-2">
+        <ThemeToggle class="ml-auto" />
+      </div>
+    </nav>
+  </div>
 
   <!-- HERO -->
   <section
@@ -354,4 +403,39 @@ const typeStyle: Record<Project['type'], string> = {
 
   document.getElementById('hero-email-copy')?.addEventListener('click', copyEmail);
   document.getElementById('contact-email-copy')?.addEventListener('click', copyEmail);
+</script>
+
+<script>
+  document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  });
+
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconClose = document.getElementById('icon-close');
+
+  function closeMenu() {
+    menu?.classList.add('hidden');
+    iconMenu?.classList.remove('hidden');
+    iconClose?.classList.add('hidden');
+  }
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      menu?.classList.remove('hidden');
+      iconMenu?.classList.add('hidden');
+      iconClose?.classList.remove('hidden');
+    }
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
 </script>

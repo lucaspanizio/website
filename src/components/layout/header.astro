@@ -1,34 +1,19 @@
 ---
-import { Printer } from '@lucide/astro';
+import { cn } from '@/lib/cn';
 
-import ThemeToggle from '../theme-toggle.astro';
+interface Props {
+  id?: string;
+  class?: string;
+}
+
+const { id, class: className } = Astro.props;
 ---
 
 <header
-  class="fixed top-0 left-0 right-0 h-16 z-40 print:hidden flex items-center justify-center gap-3 md:gap-4 px-4 bg-inherit bg-opacity-80 backdrop-blur-md border-b border-edge"
+  id={id}
+  class={cn('fixed top-0 left-0 right-0 h-16 flex items-center bg-surface/80 backdrop-blur-md border-b border-edge transition-all', className)}
 >
-  <ThemeToggle />
-  <button
-    id="print-btn"
-    class="cursor-pointer bg-surface-dark hover:bg-surface-darker flex items-center gap-2 px-3 md:px-4 py-1.5 text-white border-none rounded-full text-xxs md:text-xs font-bold transition-all shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
-  >
-    <Printer size={14} />
-    <span>SALVAR PDF</span>
-  </button>
+  <div class="max-w-6xl mx-auto w-full px-6 flex items-center justify-between">
+    <slot />
+  </div>
 </header>
-
-<script>
-  document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-  });
-
-  const printBtn = document.getElementById('print-btn') as HTMLButtonElement | null;
-  if (printBtn) {
-    printBtn.addEventListener('click', () => window.print());
-    window.addEventListener('beforeprint', () => { printBtn.disabled = true; });
-    window.addEventListener('afterprint', () => { printBtn.disabled = false; });
-  }
-</script>

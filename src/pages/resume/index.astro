@@ -1,20 +1,39 @@
 ---
+import { ArrowLeft, Printer } from '@lucide/astro';
+
 import Layout from '@/components/layout/index.astro';
 import Header from '@/components/layout/header.astro';
 import Footer from '@/components/layout/footer.astro';
+import Button from '@/components/button.astro';
+import ThemeToggle from '@/components/theme-toggle.astro';
 
 import HeroSection from './_hero-section.astro';
 import CourseSection from './_course-section.astro';
 import GraduationSection from './_graduation-section.astro';
 import ExperienceSection from './_experience-section.astro';
 import ProjectSection from './_project-section.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout
   title="Currículo | Panizio Dev"
   description="Confira meu currículo."
 >
-  <Header />
+  <Header class="z-40 print:hidden">
+    <Button as="a" href={base} variant="ghost">
+      <ArrowLeft size={16} />
+      <span>Voltar</span>
+    </Button>
+
+    <div class="flex items-center gap-3 md:gap-4">
+      <Button id="print-btn" variant="primary" size="sm">
+        <Printer size={14} />
+        <span>Salvar PDF</span>
+      </Button>
+      <ThemeToggle />
+    </div>
+  </Header>
 
   <main class="max-w-[1200px] mx-auto px-4 pt-24 pb-8">
     <HeroSection />
@@ -33,3 +52,19 @@ import ProjectSection from './_project-section.astro';
 
   <Footer />
 </Layout>
+
+<script>
+  document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  });
+
+  const printBtn = document.getElementById('print-btn') as HTMLButtonElement | null;
+  if (printBtn) {
+    printBtn.addEventListener('click', () => window.print());
+    window.addEventListener('beforeprint', () => { printBtn.disabled = true; });
+    window.addEventListener('afterprint', () => { printBtn.disabled = false; });
+  }
+</script>
