@@ -2,6 +2,23 @@
 @import '@fontsource/press-start-2p';
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 100 900;
+  src: url(@fontsource-variable/inter/files/inter-latin-wght-normal.woff2)
+    format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 400;
+  src: url(@fontsource/press-start-2p/files/press-start-2p-latin-400-normal.woff2) format('woff2');
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -68,7 +85,6 @@
       sans-serif;
     background-color: var(--color-surface-tint);
     color: var(--color-ink-title);
-    font-display: swap;
   }
 }
 

@@ -3,6 +3,9 @@ import '@/styles/global.css';
 import type { Lang } from '@/i18n/utils';
 import { translations } from '@/i18n/translations';
 
+import interLatinWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import pressStart2pLatinWoff2 from '@fontsource/press-start-2p/files/press-start-2p-latin-400-normal.woff2?url';
+
 interface Props {
   title?: string;
   titleKey?: string;
@@ -23,6 +26,8 @@ const htmlLang = lang === 'en' ? 'en' : 'pt-BR';
 <!doctype html>
 <html lang={htmlLang} data-title-key={titleKey} translate="no">
   <head>
+    <link rel="preload" as="font" type="font/woff2" href={interLatinWoff2} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={pressStart2pLatinWoff2} crossorigin />
     <script is:inline>
       (function () {
         var s = localStorage.getItem('theme');
