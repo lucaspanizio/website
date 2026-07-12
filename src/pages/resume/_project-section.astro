@@ -1,40 +1,9 @@
 ---
-import { FolderGit2, ExternalLink } from '@lucide/astro';
-import GithubIcon from '@/components/icons/GithubIcon.astro';
+import { FolderGit2 } from '@lucide/astro';
+import ProjectCard from '@/components/project-card.astro';
+import { getFeaturedProjects } from '@/lib/github';
 
-interface Project {
-  slug: string;
-  repo: string;
-  demo?: string;
-  tags: string[];
-  type: 'frontend' | 'backend' | 'mobile' | 'library';
-  name: string;
-  desc: string;
-}
-
-const projects: Project[] = [
-  { slug: 'coffee-delivery', repo: 'https://github.com/lucaspanizio/coffee-delivery', demo: 'https://panizio-coffee-delivery.vercel.app', tags: ['React', 'TypeScript', 'Styled Components'], type: 'frontend', name: 'Coffee Delivery', desc: 'E-commerce de cafés com seleção de produtos, carrinho de compras e fluxo de checkout com endereço e forma de pagamento.' },
-  { slug: 'forest-wind', repo: 'https://github.com/lucaspanizio/forest-wind', demo: 'https://lucaspanizio.github.io/forest-wind', tags: ['Astro', 'Tailwind CSS'], type: 'frontend', name: 'Forest Wind', desc: 'Landing page de produto com design moderno construída com Astro e Tailwind CSS v4.' },
-  { slug: 'flexblog', repo: 'https://github.com/lucaspanizio/flexblog', demo: 'https://lucaspanizio.github.io/flexblog', tags: ['CSS', 'Flexbox', 'HTML'], type: 'frontend', name: 'Flexblog', desc: 'Landing page de um blog fictício desenvolvida para estudo aprofundado do CSS Flexbox.' },
-  { slug: 'cert-generator', repo: 'https://github.com/lucaspanizio/gerador-certificados', tags: ['TypeScript'], type: 'frontend', name: 'Gerador de Certificados', desc: 'Ferramenta para geração de certificados personalizados a partir de dados fornecidos pelo usuário.' },
-  { slug: 'calculator', repo: 'https://github.com/lucaspanizio/calculator', demo: 'https://panizio-calculator.vercel.app', tags: ['React', 'TypeScript', 'Styled Components'], type: 'frontend', name: 'Calculator', desc: 'Calculadora com suporte às operações básicas e histórico de cálculos realizados.' },
-  { slug: 'todo-web', repo: 'https://github.com/lucaspanizio/todo-web', tags: ['React', 'TypeScript', 'Styled Components'], type: 'frontend', name: 'To Do Web', desc: 'Aplicação de gerenciamento de tarefas com criação, marcação como concluída e exclusão de itens.' },
-  { slug: 'kanban', repo: 'https://github.com/lucaspanizio/kanban', demo: 'https://panizio-kanban.vercel.app', tags: ['React', 'TypeScript', 'Styled Components', 'dnd-kit'], type: 'frontend', name: 'Kanban', desc: 'Quadro Kanban com drag and drop entre colunas, utilizando a biblioteca dnd-kit.' },
-  { slug: 'nlw-expert-notes', repo: 'https://github.com/lucaspanizio/nlw-expert-notes', demo: 'https://panizio-nlw-expert-notes.vercel.app', tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'], type: 'frontend', name: 'NLW Expert Notes', desc: 'App de criação de notas via texto ou transcrição de áudio em tempo real usando a Web Speech API.' },
-  { slug: 'passin-web', repo: 'https://github.com/lucaspanizio/nlw-unite-pass.in-react', demo: 'https://panizio-nlw-unite-pass-in-react.vercel.app', tags: ['React', 'TypeScript', 'TanStack Query', 'Tailwind CSS'], type: 'frontend', name: 'Pass.in — Web', desc: 'Gerenciamento de participantes em eventos com listagem, busca e paginação no frontend.' },
-  { slug: 'nlw-expert-polls', repo: 'https://github.com/lucaspanizio/nlw-expert-polls', tags: ['Node.js', 'TypeScript', 'WebSockets', 'Redis'], type: 'backend', name: 'NLW Expert Polls', desc: 'API para criação, consulta e votação em enquetes com atualizações em tempo real via WebSockets.' },
-  { slug: 'passin-api', repo: 'https://github.com/lucaspanizio/nlw-unite-pass.in-nodejs', tags: ['Node.js', 'TypeScript', 'Fastify', 'Prisma'], type: 'backend', name: 'Pass.in — API', desc: 'Backend do sistema de gerenciamento de participantes em eventos com check-in e geração de crachás.' },
-  { slug: 'nlw-journey-app', repo: 'https://github.com/lucaspanizio/nlw-journey-app', tags: ['React Native', 'TypeScript', 'Expo', 'Tailwind CSS'], type: 'mobile', name: 'NLW Journey App', desc: 'App mobile para planejamento de viagens com criação de roteiros, atividades e links úteis.' },
-  { slug: 'use-enhance-children', repo: 'https://github.com/lucaspanizio/use-enhance-children', tags: ['React', 'TypeScript', 'Vitest'], type: 'library', name: 'use-enhance-children', desc: 'Hook React customizado para injeção de props em elementos filhos de forma genérica e reutilizável.' },
-  { slug: 'mf-lab', repo: 'https://github.com/lucaspanizio/mf-lab', tags: ['React', 'Angular', 'Vue 3', 'Module Federation'], type: 'frontend', name: 'MF Lab', desc: 'Laboratório de exploração de Module Federation e Web Components integrando React, Angular e Vue.' },
-];
-
-const typeStyle: Record<Project['type'], string> = {
-  frontend: 'bg-accent-50 border-accent-100 text-accent-700 dark:bg-accent-600/20 dark:border-accent-600/30 dark:text-accent-400',
-  backend: 'bg-success-50/40 border-success-100 text-success-700 dark:bg-success-600/20 dark:border-success-600/30 dark:text-success-400',
-  mobile: 'bg-warning-50/40 border-warning-100 text-warning-700 dark:bg-yellow-600/20 dark:border-yellow-600/30 dark:text-yellow-400',
-  library: 'bg-surface-tint border-edge text-ink-muted',
-};
+const projects = await getFeaturedProjects();
 ---
 
 <section class="bg-surface border-edge border p-6 rounded-lg shadow-xl mt-6 print-break-inside-avoid">
@@ -47,32 +16,7 @@ const typeStyle: Record<Project['type'], string> = {
 
   <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 pt-4">
     {projects.map((project) => (
-      <div class="border border-edge-faint rounded-lg p-4 flex flex-col gap-3 hover:border-blue-300 dark:hover:border-accent-600/50 transition-colors">
-        <div class="flex items-start justify-between gap-2">
-          <div class="flex items-center gap-2 flex-wrap">
-            <h3 class="text-ink-title font-bold text-sm">{project.name}</h3>
-            <span class={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded border ${typeStyle[project.type]}`}>
-              {project.type}
-            </span>
-          </div>
-          <div class="flex gap-2 shrink-0 mt-0.5">
-            <a href={project.repo} target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-accent-700 transition-colors" title="GitHub">
-              <GithubIcon size={14} />
-            </a>
-            {project.demo && (
-              <a href={project.demo} target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-accent-700 transition-colors" title="Demo">
-                <ExternalLink size={14} />
-              </a>
-            )}
-          </div>
-        </div>
-        <p class="text-ink-body text-xs leading-relaxed flex-1">{project.desc}</p>
-        <div class="flex flex-wrap gap-1">
-          {project.tags.map((tag) => (
-            <span class="bg-surface-tint border-edge text-ink-muted px-2 py-0.5 border rounded text-[9px] uppercase font-bold tracking-wider">{tag}</span>
-          ))}
-        </div>
-      </div>
+      <ProjectCard project={project} />
     ))}
   </div>
 </section>
