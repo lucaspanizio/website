@@ -1,0 +1,53 @@
+---
+import { cn } from '@/lib/cn';
+
+interface Props {
+  as?: 'a' | 'button';
+  id?: string;
+  href?: string;
+  class?: string;
+  disabled?: boolean;
+  size?: 'sm' | 'md';
+  type?: 'button' | 'submit';
+  variant?: 'primary' | 'outline' | 'ghost';
+}
+
+const {
+  as = 'button',
+  id,
+  href,
+  size = 'md',
+  variant = 'primary',
+  type = 'button',
+  class: className,
+  disabled = false,
+}: Props = Astro.props;
+
+const variants: Record<NonNullable<Props['variant']>, string> = {
+  primary: 'rounded-full font-bold shadow-sm bg-surface-dark hover:bg-surface-darker text-white',
+  outline: 'rounded-full font-bold border border-edge hover:border-accent-600 text-ink-muted hover:text-accent-600',
+  ghost: 'rounded-md font-medium text-sm px-3 py-2 text-ink-body hover:text-accent-600 hover:bg-surface-dim',
+};
+
+const sizes: Record<NonNullable<Props['size']>, string> = {
+  sm: 'px-3 md:px-4 py-1.5 text-xxs md:text-xs',
+  md: 'px-4 py-2 text-xs',
+};
+
+const classes = cn(
+  'cursor-pointer inline-flex items-center gap-2 transition-all disabled:opacity-60 disabled:cursor-not-allowed',
+  variants[variant],
+  variant !== 'ghost' && sizes[size],
+  className,
+);
+---
+
+{as === 'a' ? (
+  <a href={href} id={id} class={classes}>
+    <slot />
+  </a>
+) : (
+  <button type={type} id={id} disabled={disabled} class={classes}>
+    <slot />
+  </button>
+)}
