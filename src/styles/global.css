@@ -66,7 +66,7 @@
   --color-surface-dark: #2563eb;
   --color-surface-darker: #1d4ed8;
 
-  --color-edge-faint: #18181b;
+  --color-edge-faint: #27272a;
   --color-edge: #27272a;
   --color-edge-soft: #3f3f46;
 }
@@ -105,10 +105,6 @@
   background: var(--color-accent-700);
 }
 
-h2 {
-  margin-bottom: 0 !important;
-}
-
 @page {
   margin: 20px;
   size: 1240px 1737px;
@@ -132,16 +128,16 @@ h2 {
   }
 
   body {
-    background-color: #ffffff !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    background-color: #ffffff;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
   main {
-    padding: 8px !important;
-    margin: 0 !important;
-    max-width: 100% !important;
-    width: 100% !important;
+    margin: 0;
+    padding: 32px 16px;
+    max-width: 100%;
+    width: 100%;
   }
 
   /* Force lg: breakpoint (≥1024px) — A4 prints at ~794px so lg: is inactive by default */
