@@ -1,0 +1,36 @@
+---
+import { Award } from '@lucide/astro';
+import CourseItem from '@/components/course-item.astro';
+
+const courses = [
+  { institution: 'Rocketseat', title: 'Node.js', period: 'Em andamento · 73h', desc: 'Curso de Node.js voltado ao desenvolvimento backend com JavaScript, abordando criação de servidores, APIs REST, autenticação, integração com banco de dados e ecossistema Node.' },
+  { institution: 'Rocketseat', title: 'Dev com IA', period: 'Jun 2026 · 10h', desc: 'Curso sobre como otimizar o uso de ferramentas de IA como Claude Code, Codex e Cursor, com foco em automação de tarefas, geração de código e integração com fluxos de trabalho de desenvolvimento.' },
+  { institution: 'Rocketseat', title: 'Next.js', period: 'Fev 2026 · 45h', desc: 'Curso voltado ao desenvolvimento de aplicações com Next.js, abordando SSR, SSG, ISR, roteamento via pages e app router e Server Components.' },
+  { institution: 'Rocketseat', title: 'Angular', period: 'Jan 2026 · 11h', desc: 'Curso introdutório de Angular v21, com abordagem da estrutura do framework, componentes e fluxo básico de dados.' },
+  { institution: 'Origamid', title: 'Tailwind CSS', period: 'Ago 2025 · 16h', desc: 'Curso voltado a construção de layouts responsivos com Tailwind CSS v4, incluindo customização de tema e composição de utilitários.' },
+  { institution: 'Origamid', title: 'Javascript ES6', period: 'Jul 2025 · 74h', desc: 'Curso de JavaScript moderno (ES6+), abrangendo módulos, closures, manipulação do DOM, consumo de APIs com fetch e programação assíncrona.' },
+  { institution: 'Udemy', title: 'React Profissional', period: 'Abr 2025 · 27h', desc: 'Curso de React com foco em Styled Components, documentação de componentes com Storybook e testes automatizados com Jest.' },
+  { institution: 'Rocketseat', title: 'React.js', period: 'Mar 2025 · 50h', desc: 'Curso completo sobre o ecossistema React, incluindo componentes, estado, integração com bibliotecas, testes e processos de build e deploy.' },
+  { institution: 'Retoricamente', title: 'Comunicação e Oratória', period: 'Set 2023 · 16h', desc: 'Curso de comunicação e oratória em contexto profissional com teoria e prática sob mentoria de Cinthia Erika.' },
+];
+---
+
+<aside class="lg:col-span-5 h-full bg-surface border-edge border p-6 rounded-lg shadow-xl">
+  <h2
+    class="text-accent-600 border-edge-faint font-black tracking-widest text-xs uppercase mb-6 border-b pb-2 flex items-center gap-2"
+  >
+    <Award size={14} />
+    <span>CURSOS E CERTIFICAÇÕES</span>
+  </h2>
+
+  <div class="divide-y divide-edge-faint space-y-4">
+    {courses.map(({ institution, title, period, desc }) => (
+      <CourseItem
+        title={title}
+        period={period}
+        desc={desc}
+        institution={institution}
+      />
+    ))}
+  </div>
+</aside>

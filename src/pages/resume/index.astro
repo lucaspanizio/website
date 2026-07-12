@@ -1,33 +1,18 @@
-﻿---
+---
 import Layout from '@/components/layout/index.astro';
 import Header from '@/components/layout/header.astro';
 import Footer from '@/components/layout/footer.astro';
-
-import type { Lang } from '@/i18n/utils';
-import { translations } from '@/i18n/translations';
 
 import HeroSection from './_hero-section.astro';
 import CourseSection from './_course-section.astro';
 import GraduationSection from './_graduation-section.astro';
 import ExperienceSection from './_experience-section.astro';
 import ProjectSection from './_project-section.astro';
-
-export function getStaticPaths() {
-  return [
-    { params: { lang: 'pt' } },
-    { params: { lang: 'en' } },
-  ];
-}
-
-const { lang } = Astro.params as { lang: Lang };
-const tr = translations[lang] as any;
 ---
 
 <Layout
-  title={tr.resume.page_title}
-  titleKey="resume.page_title"
-  description={tr.resume.page_desc}
-  lang={lang}
+  title="Currículo | Panizio Dev"
+  description="Confira meu currículo."
 >
   <Header />
 
@@ -48,8 +33,3 @@ const tr = translations[lang] as any;
 
   <Footer />
 </Layout>
-
-<script>
-  const lang = document.documentElement.lang.startsWith('pt') ? 'pt' : 'en';
-  localStorage.setItem('lang', lang);
-</script>

@@ -1,14 +1,10 @@
 ---
 import { FileText, Menu, X } from '@lucide/astro';
 
-import { getLangFromUrl }  from '@/i18n/utils';
-
-import LangSwitch from '../lang-switch.astro';
 import ThemeToggle from '../theme-toggle.astro';
 
-const lang = getLangFromUrl(Astro.url);
 const base = import.meta.env.BASE_URL;
-const resumeUrl = `${base}${lang}/resume/`;
+const resumeUrl = `${base}resume/`;
 ---
 
 <header
@@ -17,8 +13,7 @@ const resumeUrl = `${base}${lang}/resume/`;
 >
   <div class="max-w-6xl mx-auto w-full px-6 flex items-center justify-between">
     <a
-      href={`${base}${lang}/`}
-      data-lang-href={`${base}{lang}/`}
+      href={base}
       class="font-black text-base bg-gradient-to-r from-accent-600 to-pink-600 bg-clip-text text-transparent tracking-tight"
       style="font-family: 'Press Start 2P', monospace; font-size: 12px;"
     >
@@ -26,25 +21,23 @@ const resumeUrl = `${base}${lang}/resume/`;
     </a>
 
     <nav class="hidden md:flex items-center gap-1">
-      <a href="#about" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim" data-i18n="home.nav.about"></a>
-      <a href="#projects" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim" data-i18n="home.nav.projects"></a>
-      <a href="#contact" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim" data-i18n="home.nav.contact"></a>
+      <a href="#about" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim">Sobre</a>
+      <a href="#projects" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim">Projetos</a>
+      <a href="#contact" class="px-3 py-2 text-sm font-medium text-ink-body hover:text-accent-600 transition-colors rounded-md hover:bg-surface-dim">Contato</a>
       <a
         href={resumeUrl}
-        data-lang-href={`${base}{lang}/resume/`}
         class="ml-3 flex items-center gap-2 bg-surface-dark hover:bg-surface-darker text-white px-4 py-2 rounded-full text-xs font-bold transition-all shadow-sm"
       >
         <FileText size={13} />
-        <span data-i18n="home.nav.resume"></span>
+        <span>Currículo</span>
       </a>
-      <LangSwitch class="ml-2" />
       <ThemeToggle class="ml-1" />
     </nav>
 
     <button
       id="menu-toggle"
       class="md:hidden p-2 text-ink-body hover:text-accent-600 transition-colors"
-      data-i18n-aria-label="home.nav.menu_aria"
+      aria-label="Abrir menu"
     >
       <span id="icon-menu"><Menu size={20} /></span>
       <span id="icon-close" class="hidden"><X size={20} /></span>
@@ -57,15 +50,14 @@ const resumeUrl = `${base}${lang}/resume/`;
   class="fixed top-16 left-0 right-0 z-40 bg-surface border-b border-edge shadow-lg hidden md:hidden"
 >
   <nav class="flex flex-col px-6 py-2">
-    <a href="#about" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors" data-i18n="home.nav.about"></a>
-    <a href="#projects" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors" data-i18n="home.nav.projects"></a>
-    <a href="#contact" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors" data-i18n="home.nav.contact"></a>
-    <a href={resumeUrl} data-lang-href={`${base}{lang}/resume/`} class="px-3 py-3.5 text-sm font-bold text-accent-600 flex items-center gap-2 border-b border-edge-faint">
+    <a href="#about" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors">Sobre</a>
+    <a href="#projects" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors">Projetos</a>
+    <a href="#contact" class="mobile-nav-link px-3 py-3.5 text-sm font-medium text-ink-body hover:text-accent-600 border-b border-edge-faint transition-colors">Contato</a>
+    <a href={resumeUrl} class="px-3 py-3.5 text-sm font-bold text-accent-600 flex items-center gap-2 border-b border-edge-faint">
       <FileText size={14} />
-      <span data-i18n="home.nav.resume"></span>
+      <span>Currículo</span>
     </a>
     <div class="px-3 py-3.5 flex items-center gap-2">
-      <LangSwitch />
       <ThemeToggle class="ml-auto" />
     </div>
   </nav>

@@ -2,20 +2,18 @@
 import { Printer } from '@lucide/astro';
 
 import ThemeToggle from '../theme-toggle.astro';
-import LangSwitch from '../lang-switch.astro';
 ---
 
 <header
   class="fixed top-0 left-0 right-0 h-16 z-40 print:hidden flex items-center justify-center gap-3 md:gap-4 px-4 bg-inherit bg-opacity-80 backdrop-blur-md border-b border-edge"
 >
-  <LangSwitch />
   <ThemeToggle />
   <button
     id="print-btn"
     class="cursor-pointer bg-surface-dark hover:bg-surface-darker flex items-center gap-2 px-3 md:px-4 py-1.5 text-white border-none rounded-full text-xxs md:text-xs font-bold transition-all shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
   >
     <Printer size={14} />
-    <span data-i18n="header.save_pdf"></span>
+    <span>SALVAR PDF</span>
   </button>
 </header>
 
