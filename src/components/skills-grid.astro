@@ -1,0 +1,76 @@
+---
+import { Database, Webhook, PawPrint } from '@lucide/astro';
+import {
+  siHtml5,
+  siCss,
+  siJavascript,
+  siTypescript,
+  siReact,
+  siNextdotjs,
+  siTailwindcss,
+  siStyledcomponents,
+  siNodedotjs,
+  siPrisma,
+  siGit,
+  siGithubactions,
+  siDocker,
+  siVite,
+  siVitest,
+  siJest,
+  siTestinglibrary,
+  siStorybook,
+  siReactrouter,
+  siReacthookform,
+  siZod,
+  siReactquery,
+} from 'simple-icons';
+
+import TechIcon from '@/components/icons/TechIcon.astro';
+
+type Skill = { name: string; path?: string; Icon?: typeof Database };
+
+const skills: Skill[] = [
+  { name: 'React', path: siReact.path },
+  { name: 'JavaScript', path: siJavascript.path },
+  { name: 'TypeScript', path: siTypescript.path },
+  { name: 'Tailwind CSS', path: siTailwindcss.path },
+  { name: 'Styled Components', path: siStyledcomponents.path },
+  { name: 'Git', path: siGit.path },
+  { name: 'Next.js', path: siNextdotjs.path },
+  { name: 'Node.js', path: siNodedotjs.path },
+  { name: 'Docker', path: siDocker.path },
+  { name: 'HTML', path: siHtml5.path },
+  { name: 'CSS', path: siCss.path },
+  { name: 'SQL', Icon: Database },
+  { name: 'Prisma ORM', path: siPrisma.path },
+  { name: 'React Router Dom', path: siReactrouter.path },
+  { name: 'React Hook Form', path: siReacthookform.path },
+  { name: 'Zod', path: siZod.path },
+  { name: 'Tanstack Query', path: siReactquery.path },
+  { name: 'Zustand', Icon: PawPrint },
+  { name: 'GitHub Actions', path: siGithubactions.path },
+  { name: 'Vite', path: siVite.path },
+  { name: 'Vitest', path: siVitest.path },
+  { name: 'Jest', path: siJest.path },
+  { name: 'Testing Library', path: siTestinglibrary.path },
+  { name: 'Storybook', path: siStorybook.path },
+  { name: 'REST APIs', Icon: Webhook },
+];
+---
+
+<div class="grid gap-2" style="grid-template-columns: repeat(auto-fill, 72px);">
+  {skills.map((skill) => {
+    const Icon = skill.Icon;
+    return (
+      <div
+        class="flex flex-col items-center justify-center gap-1.5 aspect-square px-1.5 py-1.5 bg-surface-tint border border-edge rounded-xl text-ink-muted hover:text-accent-600 hover:border-accent-600 hover:shadow-sm transition-all"
+        title={skill.name}
+      >
+        {Icon ? <Icon size={19} /> : <TechIcon path={skill.path ?? ''} size={19} />}
+        <span class="text-[9px] font-semibold text-center leading-tight line-clamp-2">
+          {skill.name}
+        </span>
+      </div>
+    );
+  })}
+</div>
