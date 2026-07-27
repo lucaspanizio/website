@@ -12,6 +12,7 @@ import Footer from '@/components/layout/footer.astro';
 import Button from '@/components/button.astro';
 import ThemeToggle from '@/components/theme-toggle.astro';
 import ProjectCard from '@/components/project-card.astro';
+import SkillsGrid from '@/components/skills-grid.astro';
 import { getFeaturedProjects } from '@/lib/github';
 
 const base = import.meta.env.BASE_URL;
@@ -111,7 +112,7 @@ const projects = await getFeaturedProjects();
         </div>
       </div>
 
-      <p class="text-ink-body text-base md:text-lg leading-relaxed max-w-2xl mx-auto">Mais de 4 anos desenvolvendo software, buscando equilibrar qualidade do código, experiência do desenvolvedor e as necessidades do produto.</p>
+      <p class="text-ink-body text-base md:text-lg leading-relaxed max-w-2xl mx-auto">Construo software com qualidade, simplicidade e longevidade.</p>
 
       <div class="flex gap-3 justify-center">
         <a href="https://github.com/lucaspanizio" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="p-3 bg-surface border border-edge rounded-full text-ink-muted hover:text-gray-900 hover:border-gray-900 dark:hover:text-accent-600 dark:hover:border-accent-600 transition-all shadow-sm">
@@ -149,14 +150,17 @@ const projects = await getFeaturedProjects();
         <div class="h-px bg-edge flex-1"></div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 items-start">
         <div class="space-y-5">
           <h3 class="text-3xl font-black text-ink-title leading-snug">
             Qualidade, clareza e evolução contínua
           </h3>
 
-          <p class="text-ink-body leading-relaxed">Atuando principalmente no frontend, construo e evoluo aplicações web com React e TypeScript, com foco em performance, qualidade de código e experiência do usuário, sempre alinhado às necessidades do produto.</p>
-          <p class="text-ink-body leading-relaxed">Também participo de discussões técnicas, code reviews, definição de padrões, e iniciativas que contribuem para a evolução contínua dos produtos. Paralelamente, venho aprofundando meus conhecimentos em Node.js para expandir minha atuação no backend.</p>
+          <p class="text-ink-body leading-relaxed">Atuando principalmente no frontend, construo e evoluo aplicações web com React e TypeScript, priorizando <span class="underline decoration-accent-600/50 decoration-2 underline-offset-4">qualidade de código</span>, <span class="underline decoration-accent-600/50 decoration-2 underline-offset-4">clareza nas soluções</span> e uma arquitetura que facilite a <span class="underline decoration-accent-600/50 decoration-2 underline-offset-4">evolução do produto</span>. Busco desenvolver aplicações performáticas, com boa experiência para usuários e desenvolvedores, sempre alinhadas às necessidades do negócio.</p>
+
+          <p class="text-ink-body leading-relaxed">Também participo de discussões técnicas, code reviews, definição de padrões e iniciativas que elevam a qualidade e a consistência do código da equipe.</p>
+
+          <p class="text-ink-body leading-relaxed">Acredito no aprendizado contínuo e estou sempre explorando novas tecnologias, conceitos e boas práticas, atualmente aprofundando meus conhecimentos em Node.js para expandir minha atuação como desenvolvedor full stack.</p>
 
           <div class="flex items-center gap-2 text-ink-muted text-sm">
             <MapPin size={14} />
@@ -171,27 +175,7 @@ const projects = await getFeaturedProjects();
           </div>
         </div>
 
-        <div class="space-y-6">
-          {[
-            { category: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Astro', 'Tailwind CSS', 'Styled Components'] },
-            { category: 'Backend', items: ['Node.js', 'Delphi', 'SQL', 'Prisma ORM', 'REST APIs'] },
-            { category: 'Ferramentas', items: ['Git', 'GitHub Actions', 'Docker', 'Vite', 'Vitest', 'Jest', 'Testing Library', 'Storybook'] },
-            { category: 'Bibliotecas', items: ['React Router Dom', 'React Hook Form', 'Zod', 'Tanstack Query', 'Zustand'] },
-          ].map((group) => (
-            <div>
-              <p class="text-xs font-bold tracking-widest uppercase text-ink-muted mb-3">
-                {group.category}
-              </p>
-              <div class="flex flex-wrap gap-2">
-                {group.items.map((skill) => (
-                  <span class="bg-surface-tint border border-edge text-ink-body px-3 py-1 rounded-full text-xs font-medium">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <SkillsGrid />
       </div>
     </div>
   </section>
