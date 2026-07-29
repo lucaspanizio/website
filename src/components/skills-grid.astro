@@ -1,29 +1,10 @@
 ---
 import { Database, Webhook, PawPrint } from '@lucide/astro';
-import {
-  siHtml5,
-  siCss,
-  siJavascript,
-  siTypescript,
-  siReact,
-  siNextdotjs,
-  siTailwindcss,
-  siStyledcomponents,
-  siNodedotjs,
-  siPrisma,
-  siGit,
-  siGithubactions,
-  siDocker,
-  siVite,
-  siVitest,
-  siJest,
-  siTestinglibrary,
-  siStorybook,
-  siReactrouter,
-  siReacthookform,
-  siZod,
-  siReactquery,
-} from 'simple-icons';
+import { siHtml5, siCss, siJavascript, siTypescript, siReact, siNextdotjs } from 'simple-icons';
+import { siStorybook, siReactrouter, siReacthookform, siZod, siReactquery } from 'simple-icons'
+import { siTailwindcss, siStyledcomponents, siNodedotjs, siPrisma } from 'simple-icons';
+import { siVite, siVitest, siJest, siTestinglibrary } from 'simple-icons'
+import { siGit, siGithubactions, siDocker } from 'simple-icons'
 
 import TechIcon from '@/components/icons/TechIcon.astro';
 
@@ -58,12 +39,12 @@ const skills: Skill[] = [
 ];
 ---
 
-<div class="grid gap-2" style="grid-template-columns: repeat(auto-fill, 72px);">
+<div class="grid gap-2 grid-cols-4 sm:grid-cols-[repeat(auto-fill,72px)]">
   {skills.map((skill) => {
     const Icon = skill.Icon;
     return (
       <div
-        class="flex flex-col items-center justify-center gap-1.5 aspect-square px-1.5 py-1.5 bg-surface-tint border border-edge rounded-xl text-ink-muted hover:text-accent-600 hover:border-accent-600 hover:shadow-sm transition-all"
+        class="flex flex-col items-center justify-center gap-1.5 aspect-square px-1.5 py-1.5 bg-surface-tint border border-edge rounded-xl text-ink-muted hover:text-accent-600 hover:border-accent-600 hover:shadow-sm transition-all last:hidden sm:last:flex"
         title={skill.name}
       >
         {Icon ? <Icon size={19} /> : <TechIcon path={skill.path ?? ''} size={19} />}
