@@ -349,4 +349,11 @@ const projects = await getFeaturedProjects();
   document.querySelectorAll('.mobile-nav-link').forEach(link => {
     link.addEventListener('click', closeMenu);
   });
+
+  document.addEventListener('click', (event) => {
+    if (menu?.classList.contains('hidden')) return;
+    const target = event.target as Node;
+    if (menu?.contains(target) || toggle?.contains(target)) return;
+    closeMenu();
+  });
 </script>
