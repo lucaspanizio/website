@@ -69,6 +69,12 @@ async function stripPageChromeForPdf(page) {
     document.querySelector('footer')?.remove();
     document.querySelector('main').style.paddingTop = '2rem';
     document.body.style.backgroundColor = '#ffffff';
+
+    // Chromium rasteriza box-shadow como imagens JPEG enormes no PDF,
+    // inflando o arquivo em centenas de KB.
+    const style = document.createElement('style');
+    style.textContent = '* { box-shadow: none !important; }';
+    document.head.appendChild(style);
   });
   await page.emulateMedia({ media: 'screen' });
 }
