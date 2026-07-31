@@ -7,11 +7,13 @@ import path from 'node:path';
 import { chromium } from 'playwright';
 import { PDFDocument } from 'pdf-lib';
 
+import { RESUME_FILENAME } from '../src/data/config.ts';
+
 const PORT = 4323;
 const RESUME_URL = `http://127.0.0.1:${PORT}/resume`;
 
 const ROOT = path.resolve(fileURLToPath(import.meta.url), '../..');
-const OUT_FILE = path.join(ROOT, 'public/CV2026 - Jose Lucas Panizio.pdf');
+const OUT_FILE = path.join(ROOT, 'public', RESUME_FILENAME);
 const ASTRO_BIN = path.join(
   ROOT,
   'node_modules',

@@ -5,6 +5,7 @@ interface Props {
   as?: 'a' | 'button';
   id?: string;
   href?: string;
+  download?: boolean | string;
   class?: string;
   disabled?: boolean;
   size?: 'sm' | 'md';
@@ -16,6 +17,7 @@ const {
   as = 'button',
   id,
   href,
+  download,
   size = 'md',
   variant = 'primary',
   type = 'button',
@@ -43,7 +45,7 @@ const classes = cn(
 ---
 
 {as === 'a' ? (
-  <a href={href} id={id} class={classes}>
+  <a href={href} id={id} class={classes} download={download}>
     <slot />
   </a>
 ) : (
