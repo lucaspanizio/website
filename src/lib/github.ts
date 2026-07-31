@@ -1,4 +1,5 @@
-import { FEATURED_PROJECTS, GITHUB_OWNER, type FeaturedProject } from '@/data/projects';
+import { GITHUB_OWNER } from '@/data/config';
+import { FEATURED_PROJECTS, type FeaturedProject } from '@/data/projects';
 
 export interface Project extends FeaturedProject {
   desc: string;
@@ -19,7 +20,9 @@ async function fetchGithubRepo(repo: string): Promise<GithubRepoResponse> {
     headers: {
       Accept: 'application/vnd.github+json',
       'User-Agent': `${GITHUB_OWNER}-website`,
-      ...(import.meta.env.GITHUB_TOKEN ? { Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}` } : {}),
+      ...(import.meta.env.GITHUB_TOKEN
+        ? { Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}` }
+        : {}),
     },
   });
 

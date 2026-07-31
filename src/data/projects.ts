@@ -8,8 +8,6 @@ export interface FeaturedProject {
   type: ProjectType;
 }
 
-export const GITHUB_OWNER = 'lucaspanizio';
-
 /**
  * Curadoria dos projetos exibidos no site — home e currículo.
  * A ordem aqui é a ordem de exibição.
