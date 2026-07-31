@@ -9,6 +9,9 @@
     "type": "git",
     "url": "git+https://github.com/lucaspanizio/website.git"
   },
+  "engines": {
+    "node": ">=22.18.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
