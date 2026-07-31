@@ -4,6 +4,10 @@ import '@/styles/global.css';
 import interLatinWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import pressStart2pLatinWoff2 from '@fontsource/press-start-2p/files/press-start-2p-latin-400-normal.woff2?url';
 
+import { GA_MEASUREMENT_ID } from '@/data/config';
+
+const enableAnalytics = import.meta.env.ENABLE_ANALYTICS === 'true';
+
 interface Props {
   title?: string;
   description?: string;
@@ -51,6 +55,18 @@ const {
 
     <!-- Canonical -->
     <link rel="canonical" href="https://panizio.is-a.dev" />
+
+    {enableAnalytics && (
+      <>
+        <script async is:inline src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+        <script is:inline define:vars={{ GA_MEASUREMENT_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', GA_MEASUREMENT_ID);
+        </script>
+      </>
+    )}
   </head>
 
   <body class="min-h-screen flex flex-col selection:bg-accent-600 selection:text-white">
