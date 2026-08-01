@@ -6,7 +6,7 @@ import Header from '@/components/layout/header.astro';
 import Footer from '@/components/layout/footer.astro';
 import Button from '@/components/button.astro';
 import ThemeToggle from '@/components/theme-toggle.astro';
-import { RESUME_FILENAME } from '@/data/config.js';
+import { RESUME_INTERNAL_FILENAME, RESUME_FILENAME_TO_SAVE } from '@/data/config.js';
 
 import HeroSection from './_hero-section.astro';
 import CourseSection from './_course-section.astro';
@@ -28,7 +28,7 @@ const base = import.meta.env.BASE_URL;
     </Button>
 
     <div class="flex items-center gap-3 md:gap-4">
-      <Button as="a" variant="primary" href={`${base}${RESUME_FILENAME}`} download={RESUME_FILENAME} id="print-btn">
+      <Button as="a" variant="primary" href={`${base}${RESUME_INTERNAL_FILENAME}`} download={RESUME_FILENAME_TO_SAVE} id="print-btn">
         <Printer size={14} />
         <span>Salvar PDF</span>
       </Button>
