@@ -13,6 +13,7 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    if: ${{ !contains(join(github.event.commits.*.message, ' '), '[skip-resume]') }}
 
     steps:
       - uses: actions/checkout@v4
