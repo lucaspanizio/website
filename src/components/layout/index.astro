@@ -4,7 +4,7 @@ import '@/styles/global.css';
 import interLatinWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import pressStart2pLatinWoff2 from '@fontsource/press-start-2p/files/press-start-2p-latin-400-normal.woff2?url';
 
-import { GA_MEASUREMENT_ID } from '@/data/config';
+import { GA_MEASUREMENT_ID, PROJECT_TITLE, PROJECT_DESCRIPTION } from '@/data/config';
 
 const enableAnalytics = import.meta.env.ENABLE_ANALYTICS === 'true';
 
@@ -14,8 +14,8 @@ interface Props {
 }
 
 const {
-  title = 'Panizio Dev',
-  description = 'Website para apresentação pessoal, portifólio, currículo e meios de contato.',
+  title = PROJECT_TITLE,
+  description = PROJECT_DESCRIPTION,
 } = Astro.props;
 ---
 
@@ -24,6 +24,7 @@ const {
   <head>
     <link rel="preload" as="font" type="font/woff2" href={interLatinWoff2} crossorigin />
     <link rel="preload" as="font" type="font/woff2" href={pressStart2pLatinWoff2} crossorigin />
+
     <script is:inline>
       (function () {
         var s = localStorage.getItem('theme');
@@ -31,6 +32,7 @@ const {
         if (s === 'dark' || (!s && p)) document.documentElement.classList.add('dark');
       })();
     </script>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google" content="notranslate" />

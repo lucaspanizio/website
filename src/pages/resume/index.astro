@@ -3,10 +3,10 @@ import { ArrowLeft, Printer } from '@lucide/astro';
 
 import Layout from '@/components/layout/index.astro';
 import Header from '@/components/layout/header.astro';
+import { RESUME_INTERNAL_FILENAME, RESUME_FILENAME_TO_SAVE } from '@/data/config.js';
+import ThemeToggle from '@/components/theme-toggle.astro';
 import Footer from '@/components/layout/footer.astro';
 import Button from '@/components/button.astro';
-import ThemeToggle from '@/components/theme-toggle.astro';
-import { RESUME_INTERNAL_FILENAME, RESUME_FILENAME_TO_SAVE } from '@/data/config.js';
 
 import HeroSection from './_hero-section.astro';
 import CourseSection from './_course-section.astro';
@@ -18,7 +18,7 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <Layout
-  title="Currículo | Panizio Dev"
+  title="Panizio Dev | Currículo"
   description="Confira meu currículo."
 >
   <Header class="z-40">

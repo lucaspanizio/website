@@ -15,19 +15,16 @@ import ProjectCard from '@/components/project-card.astro';
 import SkillsGrid from '@/components/skills-grid.astro';
 import { getFeaturedProjects } from '@/lib/github';
 
-const base = import.meta.env.BASE_URL;
-const resumeUrl = `${base}resume/`;
+const baseUrl = import.meta.env.BASE_URL;
+const resumeUrl = `${baseUrl}resume/`;
 
 const projects = await getFeaturedProjects();
 ---
 
-<Layout
-  title="Início | Panizio Dev"
-  description="Portfolio de José Lucas Panizio, Desenvolvedor Frontend com mais de 4 anos de experiência em React e TypeScript."
->
+<Layout>
   <Header id="home-nav" class="z-50">
     <a
-      href={base}
+      href={baseUrl}
       class="font-black text-base bg-gradient-to-r from-accent-600 to-pink-600 bg-clip-text text-transparent tracking-tight"
       style="font-family: 'Press Start 2P', monospace; font-size: 12px;"
     >
@@ -63,6 +60,7 @@ const projects = await getFeaturedProjects();
       <Button as="a" href="#about" variant="ghost" class="mobile-nav-link">Sobre</Button>
       <Button as="a" href="#projects" variant="ghost" class="mobile-nav-link">Projetos</Button>
       <Button as="a" href="#contact" variant="ghost" class="mobile-nav-link">Contato</Button>
+
       <a href={resumeUrl} class="px-3 py-3.5 text-sm font-bold text-accent-600 flex items-center gap-2 border-b border-edge-faint">
         <FileText size={14} />
         <span>Currículo</span>
@@ -91,7 +89,7 @@ const projects = await getFeaturedProjects();
         <p class="text-accent-600 font-mono text-sm font-bold tracking-[0.3em] uppercase">Olá, eu sou</p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
           <Image
-            src={`${base}avatar.webp`}
+            src={`${baseUrl}avatar.webp`}
             alt="Lucas Panizio"
             width={200}
             height={200}
@@ -169,7 +167,7 @@ const projects = await getFeaturedProjects();
 
           <div class="pt-2">
             <a
-              href={`${base}resume/`}
+              href={resumeUrl}
               class="inline-flex items-center gap-2 text-accent-600 font-bold text-sm hover:underline"
             >Ver currículo completo →</a>
           </div>
@@ -356,4 +354,39 @@ const projects = await getFeaturedProjects();
     if (menu?.contains(target) || toggle?.contains(target)) return;
     closeMenu();
   });
+</script>
+
+<script>
+  import { PROJECT_TITLE } from "@/data/config";
+
+  // Atualiza URL e título da aba conforme a seção visível durante o scroll/touch
+  const sectionTitles: Record<string, string> = {
+    hero: PROJECT_TITLE,
+    about: `${PROJECT_TITLE} | Sobre`,
+    projects: `${PROJECT_TITLE} | Projetos`,
+    contact: `${PROJECT_TITLE} | Contato`,
+  };
+
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const id = entry.target.id;
+        const title = sectionTitles[id] || PROJECT_TITLE;
+        document.title = title;
+
+        const hash = id === 'hero' ? '' : `#${id}`;
+        if (window.location.hash !== hash) {
+          const url = `${window.location.pathname}${window.location.search}${hash}`;
+          history.replaceState(history.state, '', url);
+        }
+      });
+    },
+    { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+  );
+
+  sections.forEach((section) => sectionObserver.observe(section));
 </script>
