@@ -1,0 +1,65 @@
+---
+import { Home } from '@lucide/astro';
+
+import ThemeToggle from '@/components/theme-toggle.astro';
+import Layout from '@/components/layout/index.astro';
+import Header from '@/components/layout/header.astro';
+import Footer from '@/components/layout/footer.astro';
+import Button from '@/components/button.astro';
+import Logo from '@/components/logo.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<Layout title="Página não encontrada" noindex>
+  <Header>
+    <Logo />
+    <ThemeToggle />
+  </Header>
+
+  <div class="h-dvh overflow-hidden flex flex-col">
+    <section class="relative flex-1 min-h-0 flex flex-col items-center justify-center px-6 pt-16 text-center overflow-hidden">
+      <div
+        class="absolute inset-0 -z-10"
+        style="background-image: radial-gradient(var(--color-edge-soft) 1px, transparent 1px); background-size: 28px 28px;"
+      ></div>
+      <div class="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-accent-100 dark:bg-accent-600/15 opacity-50 blur-3xl -z-10"></div>
+      <div class="absolute -bottom-24 -right-24 w-[420px] h-[420px] rounded-full bg-pink-100 dark:bg-pink-600/15 opacity-50 blur-3xl -z-10"></div>
+
+      <div class="max-w-lg mx-auto space-y-5">
+        <p
+          class="bg-gradient-to-r from-accent-600 to-pink-600 bg-clip-text text-transparent"
+          style="font-family: 'Press Start 2P', monospace; font-size: clamp(3.5rem, 14vw, 8rem); line-height: 1;"
+        >
+          404
+        </p>
+
+        <h1 class="text-2xl md:text-3xl font-black text-ink-title leading-snug">
+          Página não encontrada
+        </h1>
+
+        <p class="text-ink-body leading-relaxed">
+          O endereço que você tentou acessar não existe.
+        </p>
+
+        <div class="pt-2 flex justify-center">
+          <Button as="a" href={baseUrl} variant="primary">
+            <Home size={14} />
+            <span>Voltar para o início</span>
+          </Button>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</Layout>
+
+<script>
+  document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  });
+</script>

@@ -11,7 +11,7 @@ const { id, class: className } = Astro.props;
 
 <header
   id={id}
-  class={cn('fixed top-0 left-0 right-0 h-16 flex items-center bg-surface/80 backdrop-blur-md border-b border-edge transition-all', className)}
+  class={cn('fixed top-0 left-0 right-0 h-16 flex items-center bg-surface/80 backdrop-blur-md border-b border-edge transition-all z-50', className)}
 >
   <div class="max-w-6xl mx-auto w-full px-6 flex items-center justify-between">
     <slot />

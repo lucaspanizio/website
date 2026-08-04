@@ -11,6 +11,7 @@ import Header from '@/components/layout/header.astro';
 import Footer from '@/components/layout/footer.astro';
 import Button from '@/components/button.astro';
 import ThemeToggle from '@/components/theme-toggle.astro';
+import Logo from '@/components/logo.astro';
 import ProjectCard from '@/components/project-card.astro';
 import SkillsGrid from '@/components/skills-grid.astro';
 import { getFeaturedProjects } from '@/lib/github';
@@ -22,14 +23,8 @@ const projects = await getFeaturedProjects();
 ---
 
 <Layout>
-  <Header id="home-nav" class="z-50">
-    <a
-      href={baseUrl}
-      class="font-black text-base bg-gradient-to-r from-accent-600 to-pink-600 bg-clip-text text-transparent tracking-tight"
-      style="font-family: 'Press Start 2P', monospace; font-size: 12px;"
-    >
-      &lt;panizio /&gt;
-    </a>
+  <Header id="home-nav">
+    <Logo />
 
     <nav class="hidden md:flex items-center gap-1">
       <Button as="a" href="#about" variant="ghost">Sobre</Button>
